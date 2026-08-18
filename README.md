@@ -393,7 +393,7 @@
 
             <div style="width: 100%;">
                 <button class="btn-main" onclick="showScreen('screen-register')">تسجيل حساب طالب جديد</button>
-                <button class="btn-main" style="background: #0f172a;" onclick="showAdminLogin()">دخول المعلم (أدمن 2026)</button>
+                <button class="btn-main" style="background: #0f172a;" onclick="showAdminLogin()">دخول المعلم (ادمن)</button>
             </div>
         </div>
 
