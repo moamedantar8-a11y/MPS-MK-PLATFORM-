@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mozakra Pro | منصة السنتر التعليمية</title>
+    <title>Mozakra Pro | المنصة التعليمية المتعددة</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -66,7 +66,6 @@
 
         .welcome-screen {
             background: var(--light-bg);
-            color: var(--text-main);
             padding: 20px;
             justify-content: flex-start;
             align-items: center;
@@ -83,7 +82,7 @@
         .accounts-list {
             width: 100%;
             margin: 10px 0;
-            max-height: 310px;
+            max-height: 280px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -100,7 +99,6 @@
             align-items: center;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
         .account-card-saved:hover {
@@ -330,12 +328,6 @@
             margin-top: 2px;
         }
 
-        .community-container {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
         .chat-box {
             background: white;
             border: 1px solid #e2e8f0;
@@ -377,6 +369,7 @@
         .chat-input-area {
             display: flex;
             gap: 5px;
+            margin-top: 8px;
         }
 
         .chat-input-area input {
@@ -396,31 +389,6 @@
             border-radius: 8px;
             cursor: pointer;
             font-size: 12px;
-        }
-
-        .extra-section {
-            background: white;
-            border-radius: 10px;
-            padding: 10px 12px;
-            margin-bottom: 8px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .extra-section h5 {
-            font-size: 11px;
-            color: var(--primary-blue);
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .schedule-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 10px;
-            padding: 4px 0;
-            border-bottom: 1px dashed #f1f5f9;
         }
 
         .modal-overlay {
@@ -477,33 +445,56 @@
 
     <div class="phone-frame">
         
-        <!-- 1. شاشة الترحيب واختيار الحسابات -->
+        <!-- 1. شاشة الترحيب الرئيسية -->
         <div id="screen-welcome" class="screen welcome-screen active">
             <div class="welcome-logo"><i class="fa-solid fa-graduation-cap"></i></div>
             <h2 style="font-size: 18px; font-weight: 900; margin-bottom: 2px;">Mozakra Pro</h2>
-            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">اختر حسابًا لمتابعة تطبيقك</p>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">اختر حسابك المسجل للمتابعة</p>
 
             <div class="accounts-list" id="savedAccountsContainer"></div>
 
             <div style="width: 100%; margin-top: auto; padding-bottom: 10px;">
-                <button class="btn-main" onclick="showScreen('screen-register')"><i class="fa-solid fa-user-plus"></i> تسجيل الدخول بحساب آخر</button>
-                <button class="btn-main" style="background: #0f172a;" onclick="showAdminLogin()"><i class="fa-solid fa-shield-halved"></i> دخول المعلم (أدمن)</button>
+                <button class="btn-main" onclick="showScreen('screen-register')"><i class="fa-solid fa-user-plus"></i> تسجل طالب جديد</button>
+                <button class="btn-main" style="background: #0f172a;" onclick="showTeacherLoginModal()"><i class="fa-solid fa-chalkboard-user"></i> دخول المعلم (لوحة التحكم)</button>
             </div>
         </div>
 
-        <!-- 2. شاشة تسجيل طالب جديد -->
+        <!-- 2. شاشة تسجيل طالب جديد (بالخطوات المتسلسلة) -->
         <div id="screen-register" class="screen register-screen">
-            <h2 style="font-size: 16px; font-weight: 900; text-align: center; margin-bottom: 2px;">إضافة طالب جديد للسنتر</h2>
-            <p style="font-size: 9px; color: #cbd5e1; text-align: center; margin-bottom: 10px;">منصة إدارة المجموعات والطلاب</p>
+            <h2 style="font-size: 15px; font-weight: 900; text-align: center; margin-bottom: 2px;">تسجيل طالب بالسنتر</h2>
+            <p style="font-size: 9px; color: #cbd5e1; text-align: center; margin-bottom: 8px;">اختر المادة، الصف، والمجموعة بدقة</p>
 
             <div class="form-group">
-                <label>اسم المعلم / المادة</label>
-                <input type="text" id="regTeacherName" placeholder="مثال: أ/ تاريخ أو أ/ لغة عربية">
+                <label>اختر المعلم والمادة</label>
+                <select id="regTeacherSelect">
+                    <option value="أ/ أحمد (رياضيات)">أ/ أحمد (رياضيات)</option>
+                    <option value="أ/ محمد (تاريخ)">أ/ محمد (تاريخ)</option>
+                    <option value="أ/ محمود (لغة عربية)">أ/ محمود (لغة عربية)</option>
+                    <option value="أ/ إبراهيم (فيزياء)">أ/ إبراهيم (فيزياء)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>الصف الدراسي</label>
+                <select id="regGrade" onchange="updateGroupsList()">
+                    <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
+                    <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
+                    <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>اختر المجموعة</label>
+                <select id="regGroup">
+                    <option value="مجموعة السبت والأربعاء (2 ظهراً)">مجموعة السبت والأربعاء (2 ظهراً)</option>
+                    <option value="مجموعة الأحد والثلاثاء (4 عصراً)">مجموعة الأحد والثلاثاء (4 عصراً)</option>
+                    <option value="مجموعة الخميس (10 صباحاً)">مجموعة الخميس (10 صباحاً)</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label>اسم الطالب الكامل</label>
-                <input type="text" id="regStudentName" placeholder="مثال: أحمد محمد">
+                <input type="text" id="regStudentName" placeholder="مثال: يوسف محمد">
             </div>
 
             <div class="form-group">
@@ -511,23 +502,11 @@
                 <input type="text" id="regParentPhone" placeholder="010xxxxxxxx">
             </div>
 
-            <div class="form-group">
-                <label>الصف الدراسي والمجموعة</label>
-                <select id="regGrade">
-                    <option value="الصف الأول الإعدادي">الصف الأول الإعدادي</option>
-                    <option value="الصف الثاني الإعدادي">الصف الثاني الإعدادي</option>
-                    <option value="الصف الثالث الإعدادي">الصف الثالث الإعدادي</option>
-                    <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
-                    <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
-                    <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
-                </select>
-            </div>
-
-            <button class="btn-main" onclick="registerNewStudent()">حفظ الحساب</button>
+            <button class="btn-main" onclick="registerNewStudent()">حفظ الحساب والانضمام</button>
             <button class="btn-main btn-secondary" onclick="showScreen('screen-welcome')">رجوع</button>
         </div>
 
-        <!-- 3. لوحة تحكم المنصة الداشبورد -->
+        <!-- 3. لوحة تحكم الطالب / المعلم (الداشبورد) -->
         <div id="screen-dashboard" class="screen">
             
             <div class="top-navbar">
@@ -538,8 +517,8 @@
                 <div class="nav-links">
                     <button class="nav-btn active" onclick="switchSection('profile')">الملف</button>
                     <button class="nav-btn" onclick="switchSection('stats')">المتابعة</button>
-                    <button class="nav-btn" onclick="switchSection('community')">المجتمع</button>
-                    <button class="nav-btn" id="adminBadgeBtn" style="background: #fef08a; color: #854d0e; display: none;"><i class="fa-solid fa-shield"></i> أدمن</button>
+                    <button class="nav-btn" onclick="switchSection('community')">مجتمع المادة</button>
+                    <button class="nav-btn" id="teacherBadgeBtn" style="background: #fef08a; color: #854d0e; display: none;"><i class="fa-solid fa-chalkboard"></i> لوحة المعلم</button>
                     <button class="nav-btn" onclick="sendWhatsAppReport()" style="background: #dcfce7; color: #166534;" title="واتساب"><i class="fa-brands fa-whatsapp"></i></button>
                     <button class="nav-btn" onclick="showScreen('screen-welcome')" style="color: var(--accent-red);"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                 </div>
@@ -547,27 +526,37 @@
 
             <div class="dashboard-content">
                 
-                <!-- أ. قسم الملف الشخصي -->
+                <!-- أ. الملف الشخصي -->
                 <div id="section-profile">
                     <div class="profile-header-card">
                         <div>
-                            <h3 id="uiStudentName" style="font-size: 14px; font-weight: 900;">اسم الطالب</h3>
-                            <span style="font-size: 10px; opacity: 0.9;">الكود التعريفي: <span id="uiId">0000</span></span>
+                            <h3 id="uiStudentName" style="font-size: 13px; font-weight: 900;">اسم الطالب</h3>
+                            <span style="font-size: 9px; opacity: 0.9;">الكود: <span id="uiId">0000</span> | المجموعة: <span id="uiGroupBadge">مجموعة</span></span>
                         </div>
-                        <i class="fa-solid fa-user-graduate" style="font-size: 24px;"></i>
+                        <i class="fa-solid fa-user-graduate" style="font-size: 22px;"></i>
                     </div>
 
                     <div class="digital-id-card">
                         <div class="qr-box"><i class="fa-solid fa-qrcode"></i></div>
                         <div>
                             <h4 style="font-size: 10px; font-weight: bold; color: var(--primary-blue);">بطاقة حضور السنتر الإلكترونية</h4>
-                            <p style="font-size: 9px; color: var(--text-muted);">معلم المادة: <span id="uiTeacher">المعلم</span></p>
+                            <p style="font-size: 9px; color: var(--text-muted);">المادة والمعلم: <span id="uiTeacher">المعلم</span></p>
                         </div>
                     </div>
 
                     <div class="info-card-item">
-                        <div class="label-side"><i class="fa-solid fa-user-tie"></i><span>المعلم والمادة</span></div>
+                        <div class="label-side"><i class="fa-solid fa-user-tie"></i><span>المعلم المسؤول</span></div>
                         <div class="value-side" id="uiTeacherName">المعلم</div>
+                    </div>
+
+                    <div class="info-card-item">
+                        <div class="label-side"><i class="fa-solid fa-users"></i><span>المجموعة والموعد</span></div>
+                        <div class="value-side" id="uiGroup">المجموعة</div>
+                    </div>
+
+                    <div class="info-card-item">
+                        <div class="label-side"><i class="fa-solid fa-book-open"></i><span>الصف الدراسي</span></div>
+                        <div class="value-side" id="uiGrade">الصف</div>
                     </div>
 
                     <div class="info-card-item" onclick="editFieldPrompt('phone', 'رقم ولي الأمر الجديد:')" style="cursor:pointer;" title="تعديل">
@@ -575,19 +564,14 @@
                         <div class="value-side" id="uiPhone">010xxxxxxxx</div>
                     </div>
 
-                    <div class="info-card-item">
-                        <div class="label-side"><i class="fa-solid fa-book-open"></i><span>الصف الدراسي</span></div>
-                        <div class="value-side" id="uiGrade">الصف الدراسي</div>
-                    </div>
-
-                    <div id="adminDeleteAccountBox" style="margin-top: 10px; display: none;">
-                        <button class="btn-main" style="background: var(--accent-red); font-size: 10px; padding: 6px;" onclick="deleteCurrentStudentAccount()"><i class="fa-solid fa-trash"></i> حذف هذا الطالب من المنصة</button>
+                    <div id="teacherDeleteAccountBox" style="margin-top: 10px; display: none;">
+                        <button class="btn-main" style="background: var(--accent-red); font-size: 10px; padding: 6px;" onclick="deleteCurrentStudentAccount()"><i class="fa-solid fa-trash"></i> حذف هذا الطالب من قاعدة بيانات معلم المادة</button>
                     </div>
                 </div>
 
-                <!-- ب. قسم المتابعة -->
+                <!-- ب. المتابعة والدرجات -->
                 <div id="section-stats" style="display: none;">
-                    <h4 style="font-size: 12px; font-weight: 900; color: var(--primary-blue); margin-bottom: 8px;">متابعة أداء الطالب بالسنتر</h4>
+                    <h4 style="font-size: 11px; font-weight: 900; color: var(--primary-blue); margin-bottom: 8px;">متابعة أداء الطالب بالسنتر</h4>
                     
                     <div class="dashboard-grid">
                         <div class="dash-card" onclick="openModal('attendance')">
@@ -626,25 +610,20 @@
                             <div class="dash-card-value" id="behStatus">ممتاز</div>
                         </div>
                     </div>
-
-                    <div class="extra-section">
-                        <h5><span><i class="fa-solid fa-circle-exclamation"></i> تنبيهات السنتر</span></h5>
-                        <div class="schedule-row"><span>حالة النظام:</span> <span style="color: var(--accent-green);">متعدد المعلمين والطلاب</span></div>
-                    </div>
                 </div>
 
-                <!-- ج. قسم مجتمع السنتر -->
+                <!-- ج. مجتمع المادة الخاص بالمدرس فقط -->
                 <div id="section-community" style="display: none;">
-                    <div class="community-container">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
-                            <h4 style="font-size: 11px; font-weight: 900; color: var(--primary-blue);"><i class="fa-solid fa-comments"></i> مجتمع طلاب السنتر</h4>
-                            <span style="font-size: 9px; color: var(--text-muted);">اسأل واستفسر عن الواجب</span>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h4 style="font-size: 11px; font-weight: 900; color: var(--primary-blue);"><i class="fa-solid fa-comments"></i> مجتمع مادة: <span id="chatTeacherTitle">المعلم</span></h4>
                         </div>
+                        <p style="font-size: 9px; color: var(--text-muted);">هنا يتم مناقشة أسئلة الواجب والدرس مع معلم المادة وزملاء المجموعة.</p>
 
                         <div class="chat-box" id="communityChatBox"></div>
 
                         <div class="chat-input-area">
-                            <input type="text" id="chatInputMessage" placeholder="اكتب سؤالك أو استفسارك عن الدرس..." onkeypress="checkEnterChat(event)">
+                            <input type="text" id="chatInputMessage" placeholder="اكتب استفسارك لمعلم المادة..." onkeypress="checkEnterChat(event)">
                             <button onclick="sendChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
                         </div>
                     </div>
@@ -659,38 +638,61 @@
 
     </div>
 
-    <!-- نافذة العرض المنبثقة -->
+    <!-- نافذة المودال لإدارة البيانات -->
     <div class="modal-overlay" id="customModal" onclick="closeModal(event)">
         <div class="modal-card" onclick="event.stopPropagation()">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #f1f5f9; padding-bottom: 5px;">
-                <h3 id="modalTitle" style="font-size: 12px; font-weight: 900; color: var(--primary-blue);">عنوان</h3>
-                <i class="fa-solid fa-xmark" style="cursor: pointer; font-size: 14px; color: var(--text-muted);" onclick="closeModalDirect()"></i>
+                <h3 id="modalTitle" style="font-size: 11px; font-weight: 900; color: var(--primary-blue);">عنوان</h3>
+                <i class="fa-solid fa-xmark" style="cursor: pointer; font-size: 13px; color: var(--text-muted);" onclick="closeModalDirect()"></i>
             </div>
             <div style="font-size: 10px; color: var(--text-muted); line-height: 1.4; margin-bottom: 8px;" id="modalBodyContent"></div>
             
             <div class="admin-controls" id="adminControlPanel">
-                <p style="font-size: 9px; font-weight: bold; color: var(--primary-blue); margin-bottom: 4px;"><i class="fa-solid fa-lock-open"></i> لوحة تحكم المعلم:</p>
+                <p style="font-size: 9px; font-weight: bold; color: var(--primary-blue); margin-bottom: 4px;"><i class="fa-solid fa-lock-open"></i> لوحة تحكم المعلم (أدمن المادة):</p>
                 <div id="adminActionButtons"></div>
             </div>
         </div>
     </div>
 
+    <!-- نافذة تسجيل دخول المعلم السرية -->
+    <div class="modal-overlay" id="teacherLoginModal" onclick="closeTeacherModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()" style="text-align: right;">
+            <h3 style="font-size: 12px; font-weight: 900; color: var(--primary-blue); margin-bottom: 6px;"><i class="fa-solid fa-chalkboard-user"></i> دخول لوحة تحكم المعلم</h3>
+            <p style="font-size: 9px; color: var(--text-muted); margin-bottom: 10px;">كل معلم ليه باسورد خاص بيه لإدارة طلابه ومادته فقط.</p>
+            
+            <div class="form-group" style="text-align: right;">
+                <label style="color: var(--text-main);">اختر اسم المعلم</label>
+                <select id="loginTeacherName" style="background: white; color: var(--text-main); border: 1px solid #cbd5e1;">
+                    <option value="أ/ أحمد (رياضيات)">أ/ أحمد (رياضيات)</option>
+                    <option value="أ/ محمد (تاريخ)">أ/ محمد (تاريخ)</option>
+                    <option value="أ/ محمود (لغة عربية)">أ/ محمود (لغة عربية)</option>
+                    <option value="أ/ إبراهيم (فيزياء)">أ/ إبراهيم (فيزياء)</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="text-align: right;">
+                <label style="color: var(--text-main);">كود الأدمن السري</label>
+                <input type="password" id="loginTeacherPass" placeholder="أدخل كود المدرس (مثال: 2026)" style="background: white; color: var(--text-main); border: 1px solid #cbd5e1;">
+            </div>
+
+            <button class="btn-main" onclick="verifyTeacherLogin()">فتح لوحة المعلم</button>
+        </div>
+    </div>
+
     <script>
-        let isAdmin = false;
+        let isTeacherMode = false;
+        let loggedInTeacher = "";
         let currentStudentIndex = 0;
 
-        let savedAccounts = JSON.parse(localStorage.getItem('mozakra_pro_students')) || [];
-
-        let communityMessages = JSON.parse(localStorage.getItem('mozakra_pro_chat')) || [
-            { sender: "النظام", text: "أهلاً بجميع الطلاب في منصة Mozakra Pro.", time: "اليوم" }
-        ];
+        let savedAccounts = JSON.parse(localStorage.getItem('mozakra_pro_students_v2')) || [];
+        let communityMessages = JSON.parse(localStorage.getItem('mozakra_pro_chat_v2')) || [];
 
         function renderSavedAccounts() {
             const container = document.getElementById('savedAccountsContainer');
             container.innerHTML = '';
             
             if(savedAccounts.length === 0) {
-                container.innerHTML = '<p style="font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 20px;">لا توجد حسابات مسجلة حالياً.<br>قم بتسجيل حساب جديد بالأسفل.</p>';
+                container.innerHTML = '<p style="font-size: 10px; color: var(--text-muted); text-align: center; margin-top: 15px;">لا توجد حسابات طلاب مسجلة.<br>قم بتسجيل حساب جديد.</p>';
                 return;
             }
 
@@ -698,13 +700,12 @@
                 container.innerHTML += `
                     <div class="account-card-saved" onclick="loginStudent(${index})">
                         <div style="text-align: right; flex: 1;">
-                            <h4 style="font-size: 11px; font-weight: bold; color: var(--text-main);">${acc.teacher}</h4>
-                            <span style="font-size: 10px; color: var(--secondary-blue);">00${acc.id}</span>
-                            <div style="font-size: 10px; font-weight: bold; color: var(--text-muted);">${acc.name}</div>
+                            <h4 style="font-size: 11px; font-weight: bold; color: var(--text-main);">${acc.name}</h4>
+                            <span style="font-size: 9px; color: var(--secondary-blue);">${acc.teacher} | ${acc.group}</span>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 8px;">
-                            <button onclick="event.stopPropagation(); deleteAccount(${index})" style="background: #fee2e2; color: var(--accent-red); border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="حذف الحساب"><i class="fa-solid fa-trash" style="font-size: 11px;"></i></button>
-                            <div style="width: 34px; height: 34px; background: var(--secondary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px;">${acc.name.charAt(0)}</div>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <button onclick="event.stopPropagation(); deleteAccount(${index})" style="background: #fee2e2; color: var(--accent-red); border: none; width: 26px; height: 26px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="حذف"><i class="fa-solid fa-trash" style="font-size: 10px;"></i></button>
+                            <div style="width: 32px; height: 32px; background: var(--secondary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px;">${acc.name.charAt(0)}</div>
                         </div>
                     </div>
                 `;
@@ -716,52 +717,72 @@
             document.getElementById(screenId).classList.add('active');
             if(screenId === 'screen-welcome') {
                 renderSavedAccounts();
-                isAdmin = false;
-                document.getElementById('adminBadgeBtn').style.display = 'none';
+                isTeacherMode = false;
+                loggedInTeacher = "";
             }
         }
 
-        function showAdminLogin() {
-            let pass = prompt("أدخل كود الأدمن السري للمعلم (2026):");
-            if(pass === "2026") {
-                if(savedAccounts.length === 0) {
-                    alert("لا توجد حسابات طلاب مسجلة حالياً ليقوم الأدمن بإدارتها. يرجى تسجيل طالب أولاً.");
-                    showScreen('screen-register');
+        function showTeacherLoginModal() {
+            document.getElementById('teacherLoginModal').style.display = 'flex';
+        }
+
+        function closeTeacherModal(e) {
+            document.getElementById('teacherLoginModal').style.display = 'none';
+        }
+
+        function verifyTeacherLogin() {
+            let tName = document.getElementById('loginTeacherName').value;
+            let tPass = document.getElementById('loginTeacherPass').value;
+
+            // كود سري موحد لكل المدرسين للتجربة (2026) أو تقدر تخصصه لكل مدرس
+            if(tPass === "2026") {
+                isTeacherMode = true;
+                loggedInTeacher = tName;
+                closeTeacherModal();
+
+                // فلترة الطلاب التابعين للمدرس ده بس
+                let teacherStudents = savedAccounts.filter(acc => acc.teacher === tName);
+                if(teacherStudents.length === 0) {
+                    alert(`أهلاً بك يا ${tName}. لا توجد طلاب مسجلة في مادتك حالياً.`);
                     return;
                 }
-                isAdmin = true;
-                alert("تم تفعيل وضع المعلم (أدمن). اختر الحساب المطلوب إدارته ومراجعته من القائمة.");
-                showScreen('screen-welcome');
-            } else if(pass !== null) {
-                alert("الكود غير صحيح!");
+                
+                // ادخل أول طالب يخص المدرس ده كبداية لعرض لوحة تحكمه
+                let firstIndex = savedAccounts.findIndex(acc => acc.teacher === tName);
+                loginStudent(firstIndex);
+                alert(`مرحباً بك يا ${tName} في لوحة تحكم معلم المادة الخاصة بك.`);
+            } else {
+                alert("كود المعلم السري غير صحيح!");
             }
         }
 
         function deleteAccount(index) {
-            if(confirm("هل أنت متأكد من حذف هذا الحساب نهائياً؟")) {
+            if(confirm("هل أنت متأكد من حذف هذا الحساب؟")) {
                 savedAccounts.splice(index, 1);
-                localStorage.setItem('mozakra_pro_students', JSON.stringify(savedAccounts));
+                localStorage.setItem('mozakra_pro_students_v2', JSON.stringify(savedAccounts));
                 renderSavedAccounts();
             }
         }
 
         function registerNewStudent() {
-            let teacher = document.getElementById('regTeacherName').value.trim();
+            let teacher = document.getElementById('regTeacherSelect').value;
+            let grade = document.getElementById('regGrade').value;
+            let group = document.getElementById('regGroup').value;
             let name = document.getElementById('regStudentName').value.trim();
             let phone = document.getElementById('regParentPhone').value.trim();
-            let grade = document.getElementById('regGrade').value;
 
-            if(!name || !teacher) {
-                alert("يرجى إدخال اسم المعلم وا اسم الطالب الكامل!");
+            if(!name) {
+                alert("يرجى إدخال اسم الطالب الكامل!");
                 return;
             }
 
             let newAcc = {
                 id: Math.floor(100000 + Math.random() * 900000),
                 teacher: teacher,
+                grade: grade,
+                group: group,
                 name: name,
                 phone: phone || "غير متوفر",
-                grade: grade,
                 attendance: "لم يُسجل",
                 absence: "منتظم",
                 payment: "لم يتم السداد",
@@ -771,7 +792,7 @@
             };
 
             savedAccounts.push(newAcc);
-            localStorage.setItem('mozakra_pro_students', JSON.stringify(savedAccounts));
+            localStorage.setItem('mozakra_pro_students_v2', JSON.stringify(savedAccounts));
             loginStudent(savedAccounts.length - 1);
         }
 
@@ -779,12 +800,21 @@
             currentStudentIndex = index;
             let acc = savedAccounts[index];
 
+            // لو في وضع المدرس، تأكد إنه مبيفتحش غير طلاب مادته فقط
+            if(isTeacherMode && acc.teacher !== loggedInTeacher) {
+                alert("عذراً، هذا الطالب يتبع معلم آخر ولا يظهر في لوحة تحكمك.");
+                return;
+            }
+
             document.getElementById('uiStudentName').innerText = acc.name;
             document.getElementById('uiId').innerText = acc.id;
             document.getElementById('uiTeacher').innerText = acc.teacher;
             document.getElementById('uiTeacherName').innerText = acc.teacher;
-            document.getElementById('uiPhone').innerText = acc.phone;
+            document.getElementById('uiGroup').innerText = acc.group;
+            document.getElementById('uiGroupBadge').innerText = acc.group;
             document.getElementById('uiGrade').innerText = acc.grade;
+            document.getElementById('uiPhone').innerText = acc.phone;
+            document.getElementById('chatTeacherTitle').innerText = acc.teacher;
 
             document.getElementById('attCount').innerText = acc.attendance;
             document.getElementById('absCount').innerText = acc.absence;
@@ -793,12 +823,12 @@
             document.getElementById('behStatus').innerText = acc.behavior;
             document.getElementById('scoreStatus').innerText = acc.score;
 
-            if(isAdmin) {
-                document.getElementById('adminBadgeBtn').style.display = 'block';
-                document.getElementById('adminDeleteAccountBox').style.display = 'block';
+            if(isTeacherMode) {
+                document.getElementById('teacherBadgeBtn').style.display = 'block';
+                document.getElementById('teacherDeleteAccountBox').style.display = 'block';
             } else {
-                document.getElementById('adminBadgeBtn').style.display = 'none';
-                document.getElementById('adminDeleteAccountBox').style.display = 'none';
+                document.getElementById('teacherBadgeBtn').style.display = 'none';
+                document.getElementById('teacherDeleteAccountBox').style.display = 'none';
             }
 
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -809,7 +839,7 @@
 
         function switchSection(sectionName) {
             document.querySelectorAll('.nav-btn').forEach(btn => {
-                if(btn.id !== 'adminBadgeBtn' && !btn.getAttribute('onclick').includes('WhatsApp')) btn.classList.remove('active');
+                if(btn.id !== 'teacherBadgeBtn' && !btn.getAttribute('onclick').includes('WhatsApp')) btn.classList.remove('active');
             });
             event.target.classList.add('active');
 
@@ -826,12 +856,17 @@
             let chatBox = document.getElementById('communityChatBox');
             chatBox.innerHTML = '';
             
-            let currentStudentName = savedAccounts.length > 0 ? savedAccounts[currentStudentIndex].name : "";
-            let teacherName = savedAccounts.length > 0 ? savedAccounts[currentStudentIndex].teacher : "المعلم";
-            let displayName = isAdmin ? `${teacherName} (المعلم)` : currentStudentName;
+            let acc = savedAccounts[currentStudentIndex];
+            let roomKey = acc.teacher; // مجتمع خاص بكل مدرس لوحده
 
-            communityMessages.forEach(msg => {
-                let isMine = (msg.sender === displayName || (!isAdmin && msg.sender === currentStudentName));
+            let currentMessages = communityMessages[roomKey] || [
+                { sender: "إدارة المادة", text: `أهلاً بك في مجتمع مادة ${acc.teacher}. اسأل هنا عن الواجب.`, time: "اليوم" }
+            ];
+
+            let senderName = isTeacherMode ? acc.teacher : acc.name;
+
+            currentMessages.forEach(msg => {
+                let isMine = (msg.sender === senderName);
                 chatBox.innerHTML += `
                     <div class="chat-bubble ${isMine ? 'mine' : ''}">
                         <div class="chat-sender"><span>${msg.sender}</span> <span style="font-size:7px; color:#94a3b8;">${msg.time}</span></div>
@@ -847,17 +882,21 @@
             let text = input.value.trim();
             if(!text) return;
 
-            let currentStudentName = savedAccounts[currentStudentIndex].name;
-            let teacherName = savedAccounts[currentStudentIndex].teacher;
-            let senderName = isAdmin ? teacherName : currentStudentName;
+            let acc = savedAccounts[currentStudentIndex];
+            let roomKey = acc.teacher;
+            let senderName = isTeacherMode ? acc.teacher : acc.name;
 
-            communityMessages.push({
+            if(!communityMessages[roomKey]) {
+                communityMessages[roomKey] = [];
+            }
+
+            communityMessages[roomKey].push({
                 sender: senderName,
                 text: text,
                 time: "الآن"
             });
 
-            localStorage.setItem('mozakra_pro_chat', JSON.stringify(communityMessages));
+            localStorage.setItem('mozakra_pro_chat_v2', JSON.stringify(communityMessages));
             input.value = '';
             renderCommunityChat();
         }
@@ -867,22 +906,22 @@
         }
 
         function editFieldPrompt(field, promptText) {
-            if(!isAdmin) return;
+            if(!isTeacherMode) return;
             let student = savedAccounts[currentStudentIndex];
             let newVal = prompt(promptText, student[field]);
             if(newVal !== null && newVal.trim() !== "") {
                 student[field] = newVal.trim();
-                localStorage.setItem('mozakra_pro_students', JSON.stringify(savedAccounts));
+                localStorage.setItem('mozakra_pro_students_v2', JSON.stringify(savedAccounts));
                 loginStudent(currentStudentIndex);
                 alert("تم التحديث بنجاح!");
             }
         }
 
         function deleteCurrentStudentAccount() {
-            if(!isAdmin) return;
-            if(confirm("هل أنت متأكد من حذف هذا الطالب؟")) {
+            if(!isTeacherMode) return;
+            if(confirm("هل أنت متأكد من حذف هذا الطالب من قاعدة بياناتك؟")) {
                 savedAccounts.splice(currentStudentIndex, 1);
-                localStorage.setItem('mozakra_pro_students', JSON.stringify(savedAccounts));
+                localStorage.setItem('mozakra_pro_students_v2', JSON.stringify(savedAccounts));
                 alert("تم الحذف.");
                 showScreen('screen-welcome');
             }
@@ -897,19 +936,19 @@
             if(type === 'attendance') {
                 title = "سجل الحضور بالسنتر";
                 body = `الحالة: <strong>${student.attendance}</strong>`;
-                if(isAdmin) {
+                if(isTeacherMode) {
                     adminActions = `<button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="updateData('attendance', 'حاضر في الموعد')">تسجيل حضور (حاضر)</button>`;
                 }
             } else if(type === 'absence') {
                 title = "متابعة الغياب";
                 body = `الحالة: <strong>${student.absence}</strong>`;
-                if(isAdmin) {
+                if(isTeacherMode) {
                     adminActions = `<button class="btn-main" style="padding: 5px; font-size: 10px; background: var(--accent-red);" onclick="updateData('absence', 'غياب بدون عذر')">تسجيل غياب</button>`;
                 }
             } else if(type === 'exams') {
                 title = "درجات الاختبارات الشهرية (من 10)";
                 body = `الدرجة الحالية: <strong>${student.score}</strong>`;
-                if(isAdmin) {
+                if(isTeacherMode) {
                     adminActions = `
                         <div style="display:flex; gap:4px; margin-bottom:5px; justify-content:center;">
                             <button onclick="updateData('score', '10 / 10')" style="background:#10b981; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:10px; cursor:pointer;">10</button>
@@ -921,7 +960,7 @@
             } else if(type === 'homework') {
                 title = "متابعة الواجب المنزلي";
                 body = `حالة الواجب: <strong>${student.homework}</strong>`;
-                if(isAdmin) {
+                if(isTeacherMode) {
                     adminActions = `
                         <button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="updateData('homework', 'تم تسليم الواجب')">تسجيل (تم التسليم)</button>
                         <button class="btn-main" style="padding: 5px; font-size: 10px; background: var(--accent-red); margin-top: 4px;" onclick="updateData('homework', 'لم يُسلم الواجب')">تسجيل (لم يُسلم)</button>
@@ -930,13 +969,13 @@
             } else if(type === 'payments') {
                 title = "الاشتراك والرسوم الشهرية";
                 body = `الحالة المالية: <strong style="color:var(--secondary-blue);">${student.payment}</strong>`;
-                if(isAdmin) {
+                if(isTeacherMode) {
                     adminActions = `<button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="updateData('payment', 'تم دفع اشتراك الشهر')">إصدار إيصال سداد</button>`;
                 }
             } else if(type === 'behavior') {
                 title = "السلوك والمشاركة";
                 body = `الملاحظة: <strong>${student.behavior}</strong>`;
-                if(isAdmin) {
+                if(isTeacherMode) {
                     adminActions = `<button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="editFieldPrompt('behavior', 'تعديل السلوك:')">تعديل ملاحظة السلوك</button>`;
                 }
             }
@@ -947,7 +986,7 @@
             let adminPanel = document.getElementById('adminControlPanel');
             let actionBtnContainer = document.getElementById('adminActionButtons');
             
-            if(isAdmin && adminActions !== "") {
+            if(isTeacherMode && adminActions !== "") {
                 actionBtnContainer.innerHTML = adminActions;
                 adminPanel.classList.add('active');
             } else {
@@ -975,7 +1014,7 @@
             if(field === 'homework') document.getElementById('hwStatus').innerText = val;
             if(field === 'score') document.getElementById('scoreStatus').innerText = val;
 
-            localStorage.setItem('mozakra_pro_students', JSON.stringify(savedAccounts));
+            localStorage.setItem('mozakra_pro_students_v2', JSON.stringify(savedAccounts));
             alert("تم التحديث بنجاح!");
             closeModalDirect();
         }
@@ -983,10 +1022,10 @@
         function sendWhatsAppReport() {
             let student = savedAccounts[currentStudentIndex];
             let phone = student.phone !== "غير متوفر" ? student.phone : "";
-            let reportText = `📌 *منصة Mozakra Pro التعليمية*%0A` +
-                             `👨‍🏫 المعلم: *${student.teacher}*%0A` +
+            let reportText = `📌 *تقرير منصة Mozakra Pro التعليمية*%0A` +
+                             `👨‍🏫 المعلم والمادة: *${student.teacher}*%0A` +
                              `👤 الطالب: *${student.name}*%0A` +
-                             `📚 الصف: ${student.grade}%0A` +
+                             `📚 الصف: ${student.grade} | الموعد: ${student.group}%0A` +
                              `------------------%0A` +
                              `✅ الحضور: ${student.attendance}%0A` +
                              `⚠️ الغياب: ${student.absence}%0A` +
