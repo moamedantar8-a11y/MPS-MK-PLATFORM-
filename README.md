@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPS Platform | منصة إدارة الطلاب المتكاملة</title>
+    <title>MPS Platform Pro | النظام الإداري التعليمي المتكامل</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -16,6 +16,7 @@
             --text-muted: #64748b;
             --accent-green: #10b981;
             --accent-red: #ef4444;
+            --accent-yellow: #f59e0b;
             --transition: all 0.3s ease;
         }
 
@@ -27,24 +28,24 @@
         }
 
         body {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px;
+            padding: 10px;
         }
 
         /* إطار التلفون الأساسي */
         .phone-frame {
             width: 100%;
             max-width: 410px;
-            height: 85vh;
-            max-height: 850px;
+            height: 88vh;
+            max-height: 880px;
             background: var(--light-bg);
             border-radius: 35px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -64,38 +65,38 @@
             display: flex;
         }
 
-        /* الشاشة الأولى: الترحيب والحسابات */
+        /* شاشة الترحيب والحسابات */
         .welcome-screen {
             background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
             color: white;
-            padding: 25px;
+            padding: 20px;
             justify-content: center;
             align-items: center;
             text-align: center;
         }
 
         .welcome-logo {
-            font-size: 55px;
+            font-size: 50px;
             color: #60a5fa;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .accounts-list {
             width: 100%;
-            margin: 15px 0;
-            max-height: 160px;
+            margin: 12px 0;
+            max-height: 140px;
             overflow-y: auto;
         }
 
         .account-card-saved {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 10px 14px;
-            border-radius: 12px;
+            padding: 8px 12px;
+            border-radius: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             cursor: pointer;
             transition: var(--transition);
         }
@@ -108,14 +109,14 @@
         .register-screen {
             background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
             color: white;
-            padding: 25px;
+            padding: 20px;
             justify-content: center;
             align-items: center;
         }
 
         .form-group {
             width: 100%;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             text-align: right;
         }
 
@@ -123,18 +124,23 @@
             font-size: 11px;
             color: #cbd5e1;
             display: block;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
 
         .form-group input, .form-group select {
             width: 100%;
-            padding: 10px;
-            border-radius: 10px;
+            padding: 8px 10px;
+            border-radius: 8px;
             border: 1px solid rgba(255,255,255,0.2);
             background: rgba(255,255,255,0.08);
             color: white;
-            font-size: 13px;
+            font-size: 12px;
             outline: none;
+        }
+
+        .form-group select option {
+            background: #1e3a8a;
+            color: white;
         }
 
         .btn-main {
@@ -142,9 +148,9 @@
             background: var(--secondary-blue);
             color: white;
             border: none;
-            padding: 12px;
-            border-radius: 12px;
-            font-size: 14px;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(59, 130, 246,.4);
@@ -160,13 +166,13 @@
             background: transparent;
             color: #cbd5e1;
             border: 1px solid rgba(255,255,255,0.2);
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         /* الشريط العلوي داخل التلفون */
         .top-navbar {
             background: white;
-            padding: 10px 15px;
+            padding: 8px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -179,22 +185,22 @@
         .nav-brand {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 14px;
+            gap: 5px;
+            font-size: 13px;
             font-weight: 900;
             color: var(--primary-blue);
         }
 
         .nav-links {
             display: flex;
-            gap: 4px;
+            gap: 3px;
         }
 
         .nav-btn {
             background: #f1f5f9;
             border: none;
-            padding: 6px 8px;
-            border-radius: 6px;
+            padding: 5px 7px;
+            border-radius: 5px;
             font-size: 10px;
             font-weight: 600;
             color: var(--text-muted);
@@ -209,36 +215,36 @@
 
         /* محتوى الداشبورد */
         .dashboard-content {
-            padding: 15px;
+            padding: 12px;
         }
 
         .profile-header-card {
             background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
             color: white;
-            padding: 15px;
-            border-radius: 14px;
+            padding: 12px;
+            border-radius: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .info-card-item {
             background: white;
-            padding: 12px 15px;
-            border-radius: 10px;
-            margin-bottom: 8px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 6px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border: 1px solid #e2e8f0;
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .info-card-item .label-side {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             color: var(--text-muted);
         }
 
@@ -254,45 +260,45 @@
         /* بطاقة QR Code الرقمية للطالب */
         .digital-id-card {
             background: white;
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 12px;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
             border: 1px solid #e2e8f0;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
         .qr-box {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: #eff6ff;
             color: var(--secondary-blue);
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 8px;
-            font-size: 22px;
+            font-size: 20px;
         }
 
-        /* شبكة أزرار المتابعة */
+        /* شبكة أزرار المتابعة الإضافية */
         .dashboard-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
+            gap: 8px;
+            margin-bottom: 12px;
         }
 
         .dash-card {
             background: white;
-            padding: 12px;
-            border-radius: 12px;
+            padding: 10px;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             border: 1px solid #e2e8f0;
             cursor: pointer;
             transition: var(--transition);
-            min-height: 90px;
+            min-height: 85px;
         }
 
         .dash-card:hover {
@@ -301,54 +307,54 @@
         }
 
         .dash-card-icon {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             background: #eff6ff;
             color: var(--secondary-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
-            margin-bottom: 6px;
+            font-size: 12px;
+            margin-bottom: 5px;
         }
 
         .dash-card-title {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             color: var(--text-main);
         }
 
         .dash-card-value {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-muted);
             font-weight: bold;
-            margin-top: 4px;
+            margin-top: 3px;
         }
 
-        /* إضافات لملء الفراغات وتحسين المظهر */
+        /* أقسام إضافية تملأ الفراغات وتدعم الميزات */
         .extra-section {
             background: white;
-            border-radius: 12px;
-            padding: 12px 15px;
-            margin-bottom: 10px;
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
             border: 1px solid #e2e8f0;
         }
 
         .extra-section h5 {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--primary-blue);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         .schedule-row {
             display: flex;
             justify-content: space-between;
             font-size: 11px;
-            padding: 5px 0;
+            padding: 4px 0;
             border-bottom: 1px dashed #f1f5f9;
         }
 
@@ -371,10 +377,12 @@
             background: white;
             width: 100%;
             max-width: 330px;
-            border-radius: 16px;
-            padding: 20px;
+            border-radius: 14px;
+            padding: 16px;
             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
             text-align: right;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .admin-controls {
@@ -382,7 +390,7 @@
             border: 1px dashed var(--secondary-blue);
             padding: 10px;
             border-radius: 8px;
-            margin-top: 12px;
+            margin-top: 10px;
             display: none;
         }
 
@@ -392,7 +400,7 @@
 
         .app-footer {
             text-align: center;
-            padding: 10px;
+            padding: 8px;
             font-size: 10px;
             color: var(--text-muted);
             background: white;
@@ -408,22 +416,22 @@
         <!-- 1. شاشة الترحيب -->
         <div id="screen-welcome" class="screen welcome-screen active">
             <div class="welcome-logo"><i class="fa-solid fa-graduation-cap"></i></div>
-            <h1 style="font-size: 22px; font-weight: 900; margin-bottom: 3px;">MPS Platform</h1>
-            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 15px;">النظام التعليمي المتكامل للأستاذ</p>
+            <h1 style="font-size: 20px; font-weight: 900; margin-bottom: 2px;">MPS Platform Pro</h1>
+            <p style="font-size: 11px; color: #94a3b8; margin-bottom: 12px;">نظام الإدارة التعليمية والسناتر الذكية</p>
 
-            <div style="width: 100%; text-align: right; font-size: 12px; font-weight: bold; margin-bottom: 4px;">الحسابات المسجلة:</div>
+            <div style="width: 100%; text-align: right; font-size: 11px; font-weight: bold; margin-bottom: 4px;">اختر حساب الطالب:</div>
             <div class="accounts-list" id="savedAccountsContainer"></div>
 
             <div style="width: 100%;">
-                <button class="btn-main" onclick="showScreen('screen-register')">تسجيل حساب طالب جديد</button>
+                <button class="btn-main" onclick="showScreen('screen-register')">تسجيل طالب جديد بالسنتر</button>
                 <button class="btn-main" style="background: #0f172a;" onclick="showAdminLogin()">دخول المعلم (أدمن 2026)</button>
             </div>
         </div>
 
-        <!-- 2. شاشة تسجيل طالب -->
+        <!-- 2. شاشة تسجيل طالب جديد -->
         <div id="screen-register" class="screen register-screen">
-            <h2 style="font-size: 20px; font-weight: 900; text-align: center; margin-bottom: 3px;">حساب طالب جديد</h2>
-            <p style="font-size: 11px; color: #cbd5e1; text-align: center; margin-bottom: 15px;">انضم لمنصة MPS الاحترافية</p>
+            <h2 style="font-size: 18px; font-weight: 900; text-align: center; margin-bottom: 2px;">إضافة طالب للسنتر</h2>
+            <p style="font-size: 10px; color: #cbd5e1; text-align: center; margin-bottom: 12px;">منصة MPS التعليمية المتكاملة</p>
 
             <div class="form-group">
                 <label>اسم الطالب الكامل</label>
@@ -431,8 +439,8 @@
             </div>
 
             <div class="form-group">
-                <label>اسم المدرس</label>
-                <input type="text" id="regTeacherName" value="جلال الاتربي" placeholder="اسم المدرس">
+                <label>اسم المعلم / المستر</label>
+                <input type="text" id="regTeacherName" value="جلال الاتربي" placeholder="اسم المعلم">
             </div>
 
             <div class="form-group">
@@ -450,11 +458,11 @@
             </div>
 
             <div class="form-group">
-                <label>المجموعة</label>
-                <input type="text" id="regGroup" value="المجموعة العامة" placeholder="المجموعة">
+                <label>المجموعة وموعدها</label>
+                <input type="text" id="regGroup" value="مجموعة السبت والثلاثاء" placeholder="المجموعة">
             </div>
 
-            <button class="btn-main" onclick="registerNewStudent()">حفظ ودخول</button>
+            <button class="btn-main" onclick="registerNewStudent()">حفظ وإنشاء الحساب</button>
             <button class="btn-main btn-secondary" onclick="showScreen('screen-welcome')">رجوع</button>
         </div>
 
@@ -464,13 +472,13 @@
             <div class="top-navbar">
                 <div class="nav-brand">
                     <i class="fa-solid fa-layer-group"></i>
-                    <span>MPS</span>
+                    <span>MPS Pro</span>
                 </div>
                 <div class="nav-links">
                     <button class="nav-btn active" onclick="switchSection('profile')">الملف</button>
                     <button class="nav-btn" onclick="switchSection('stats')">المتابعة</button>
                     <button class="nav-btn" id="adminBadgeBtn" style="background: #fef08a; color: #854d0e; display: none;"><i class="fa-solid fa-shield"></i> أدمن</button>
-                    <button class="nav-btn" onclick="sendWhatsAppReport()" style="background: #dcfce7; color: #166534;" title="إرسال تقرير واتساب لولي الأمر"><i class="fa-brands fa-whatsapp"></i> تقرير</button>
+                    <button class="nav-btn" onclick="sendWhatsAppReport()" style="background: #dcfce7; color: #166534;" title="إرسال تقرير واتساب"><i class="fa-brands fa-whatsapp"></i> تقرير</button>
                     <button class="nav-btn" onclick="showScreen('screen-welcome')" style="color: var(--accent-red);"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                 </div>
             </div>
@@ -481,23 +489,23 @@
                 <div id="section-profile">
                     <div class="profile-header-card">
                         <div>
-                            <h3 id="uiStudentName" style="font-size: 16px; font-weight: 900;">محمد عنتر</h3>
-                            <span style="font-size: 11px; opacity: 0.9;">الكود التعريفي: <span id="uiId">3034</span></span>
+                            <h3 id="uiStudentName" style="font-size: 15px; font-weight: 900;">محمد عنتر</h3>
+                            <span style="font-size: 10px; opacity: 0.9;">الكود التعريفي للسنتر: <span id="uiId">3034</span></span>
                         </div>
-                        <i class="fa-solid fa-graduation-cap" style="font-size: 28px;"></i>
+                        <i class="fa-solid fa-graduation-cap" style="font-size: 26px;"></i>
                     </div>
 
-                    <!-- بطاقة الـ QR Code التعريفية للطالب -->
+                    <!-- بطاقة الـ QR Code التعريفية للحضور -->
                     <div class="digital-id-card">
                         <div class="qr-box"><i class="fa-solid fa-qrcode"></i></div>
                         <div>
-                            <h4 style="font-size: 12px; font-weight: bold; color: var(--primary-blue);">بطاقة الحضور الرقمية</h4>
-                            <p style="font-size: 10px; color: var(--text-muted);">معتمدة للمسح السريع داخل السنتر</p>
+                            <h4 style="font-size: 11px; font-weight: bold; color: var(--primary-blue);">بطاقة الحضور والمسح السريع</h4>
+                            <p style="font-size: 9px; color: var(--text-muted);">تُستخدم لتسجيل الحضور بباب القاعة إلكترونياً</p>
                         </div>
                     </div>
 
                     <div class="info-card-item">
-                        <div class="label-side"><i class="fa-solid fa-user-tie"></i><span>المدرس</span></div>
+                        <div class="label-side"><i class="fa-solid fa-user-tie"></i><span>المعلم</span></div>
                         <div class="value-side" id="uiTeacher">جلال الاتربي</div>
                     </div>
 
@@ -513,63 +521,57 @@
 
                     <div class="info-card-item">
                         <div class="label-side"><i class="fa-solid fa-calendar-days"></i><span>المجموعة</span></div>
-                        <div class="value-side" id="uiGroup">المجموعة العامة</div>
+                        <div class="value-side" id="uiGroup">مجموعة السبت والثلاثاء</div>
                     </div>
                 </div>
 
-                <!-- قسم المتابعة والأزرار التفاعلية -->
+                <!-- قسم المتابعة والأزرار التفاعلية الشاملة -->
                 <div id="section-stats" style="display: none;">
-                    <h4 style="font-size: 14px; font-weight: 900; color: var(--primary-blue); margin-bottom: 10px;">لوحة المتابعة الشاملة</h4>
+                    <h4 style="font-size: 13px; font-weight: 900; color: var(--primary-blue); margin-bottom: 8px;">لوحة المتابعة الشاملة للسنتر</h4>
                     
                     <div class="dashboard-grid">
-                        <div class="dash-card" onclick="openModal('notifications')">
-                            <div class="dash-card-icon"><i class="fa-solid fa-bell"></i></div>
-                            <div class="dash-card-title">الإشعارات</div>
-                            <div class="dash-card-value">لا توجد تنبيهات</div>
-                        </div>
-
                         <div class="dash-card" onclick="openModal('attendance')">
                             <div class="dash-card-icon"><i class="fa-solid fa-calendar-check"></i></div>
-                            <div class="dash-card-title">مرات الحضور</div>
+                            <div class="dash-card-title">سجل الحضور</div>
                             <div class="dash-card-value" id="attCount" style="color: var(--accent-green);">لم يُسجل</div>
                         </div>
 
                         <div class="dash-card" onclick="openModal('absence')">
                             <div class="dash-card-icon" style="background: #fee2e2; color: var(--accent-red);"><i class="fa-solid fa-calendar-xmark"></i></div>
-                            <div class="dash-card-title">مرات الغياب</div>
-                            <div class="dash-card-value" id="absCount" style="color: var(--accent-red);">لم يُسجل</div>
+                            <div class="dash-card-title">سجل الغياب والتأخير</div>
+                            <div class="dash-card-value" id="absCount" style="color: var(--accent-red);">منتظم</div>
+                        </div>
+
+                        <div class="dash-card" onclick="openModal('exams')">
+                            <div class="dash-card-icon"><i class="fa-solid fa-star-half-stroke"></i></div>
+                            <div class="dash-card-title">الدرجات والتقييم (من 10)</div>
+                            <div class="dash-card-value" id="scoreStatus">قيد الانتظار</div>
+                        </div>
+
+                        <div class="dash-card" onclick="openModal('homework')">
+                            <div class="dash-card-icon" style="background: #fef3c7; color: var(--accent-yellow);"><i class="fa-solid fa-book"></i></div>
+                            <div class="dash-card-title">متابعة الواجب</div>
+                            <div class="dash-card-value" id="hwStatus">لم يُراجع</div>
                         </div>
 
                         <div class="dash-card" onclick="openModal('payments')">
                             <div class="dash-card-icon"><i class="fa-solid fa-wallet"></i></div>
-                            <div class="dash-card-title">المدفوعات</div>
-                            <div class="dash-card-value" id="payStatus">لم يتم الدفع</div>
+                            <div class="dash-card-title">الاشتراك والرسوم</div>
+                            <div class="dash-card-value" id="payStatus">لم يتم السداد</div>
                         </div>
 
-                        <div class="dash-card" onclick="openModal('exams')">
-                            <div class="dash-card-icon"><i class="fa-solid fa-chart-line"></i></div>
-                            <div class="dash-card-title">الدرجات والتقييم</div>
-                            <div class="dash-card-value" id="scoreStatus">قيد الانتظار</div>
-                        </div>
-
-                        <div class="dash-card" onclick="openModal('notes')">
-                            <div class="dash-card-icon"><i class="fa-solid fa-note-sticky"></i></div>
-                            <div class="dash-card-title">ملاحظات المستر</div>
-                            <div class="dash-card-value">لا توجد ملاحظات</div>
+                        <div class="dash-card" onclick="openModal('behavior')">
+                            <div class="dash-card-icon"><i class="fa-solid fa-face-smile"></i></div>
+                            <div class="dash-card-title">السلوك والمشاركة</div>
+                            <div class="dash-card-value" id="behStatus">ممتاز</div>
                         </div>
                     </div>
 
-                    <!-- إضافات لملء الفراغات -->
+                    <!-- إضافات وأقسام مساعدة لمعلومات الحصص -->
                     <div class="extra-section">
-                        <h5><i class="fa-solid fa-calendar-week"></i> جدول مواعيد الحصص</h5>
-                        <div class="schedule-row"><span>السبت والثلاثاء</span> <span>3:00 عصراً</span></div>
-                        <div class="schedule-row"><span>الخميس (اختباري)</span> <span>5:00 مساءً</span></div>
-                    </div>
-
-                    <div class="extra-section">
-                        <h5><i class="fa-solid fa-circle-info"></i> حالة النظام والأمان</h5>
-                        <div class="schedule-row"><span>الإصدار البرمجي</span> <span>v3.0 (محمي كلياً)</span></div>
-                        <div class="schedule-row"><span>حالة الحساب</span> <span style="color: var(--accent-green);">نشط وآمن</span></div>
+                        <h5><i class="fa-solid fa-circle-exclamation"></i> تنبيهات وتوجيهات عاجلة</h5>
+                        <div class="schedule-row"><span>الامتحان القادم</span> <span style="color: var(--accent-red);">الخميس القادم</span></div>
+                        <div class="schedule-row"><span>حالة النظام</span> <span style="color: var(--accent-green);">مؤمن بالكامل (أدمن 2026)</span></div>
                     </div>
                 </div>
 
@@ -582,17 +584,17 @@
 
     </div>
 
-    <!-- نافذة العرض المنبثقة -->
+    <!-- نافذة العرض المنبثقة التفاعلية -->
     <div class="modal-overlay" id="customModal" onclick="closeModal(event)">
         <div class="modal-card" onclick="event.stopPropagation()">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #f1f5f9; padding-bottom: 6px;">
-                <h3 id="modalTitle" style="font-size: 14px; font-weight: 900; color: var(--primary-blue);">عنوان</h3>
-                <i class="fa-solid fa-xmark" style="cursor: pointer; font-size: 16px; color: var(--text-muted);" onclick="closeModalDirect()"></i>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #f1f5f9; padding-bottom: 5px;">
+                <h3 id="modalTitle" style="font-size: 13px; font-weight: 900; color: var(--primary-blue);">عنوان</h3>
+                <i class="fa-solid fa-xmark" style="cursor: pointer; font-size: 15px; color: var(--text-muted);" onclick="closeModalDirect()"></i>
             </div>
-            <div style="font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px;" id="modalBodyContent"></div>
+            <div style="font-size: 11px; color: var(--text-muted); line-height: 1.4; margin-bottom: 10px;" id="modalBodyContent"></div>
             
             <div class="admin-controls" id="adminControlPanel">
-                <p style="font-size: 11px; font-weight: bold; color: var(--primary-blue); margin-bottom: 6px;"><i class="fa-solid fa-lock-open"></i> لوحة تحكم المستر (كود 2026):</p>
+                <p style="font-size: 10px; font-weight: bold; color: var(--primary-blue); margin-bottom: 5px;"><i class="fa-solid fa-lock-open"></i> لوحة تحكم المعلم (كود 2026):</p>
                 <div id="adminActionButtons"></div>
             </div>
         </div>
@@ -602,8 +604,21 @@
         let isAdmin = false;
         let currentStudentIndex = 0;
 
-        let savedAccounts = JSON.parse(localStorage.getItem('mps_all_students')) || [
-            { id: 3034, name: "محمد عنتر", teacher: "جلال الاتربي", phone: "201000000000", grade: "الصف الاول الثانوي", group: "المجموعة العامة", attendance: "لم يُسجل", absence: "لم يُسجل", payment: "لم يتم الدفع", notes: "لم تُسجل ملاحظات بعد", score: "لم تُسجل بعد" }
+        let savedAccounts = JSON.parse(localStorage.getItem('mps_pro_students')) || [
+            { 
+                id: 3034, 
+                name: "محمد عنتر", 
+                teacher: "جلال الاتربي", 
+                phone: "201000000000", 
+                grade: "الصف الاول الثانوي", 
+                group: "مجموعة السبت والثلاثاء", 
+                attendance: "لم يُسجل", 
+                absence: "منتظم (لا غياب)", 
+                payment: "لم يتم السداد", 
+                homework: "لم يتم التسليم", 
+                behavior: "مشارك بإيجابية وهادئ",
+                score: "لم تُسجل بعد" 
+            }
         ];
 
         function renderSavedAccounts() {
@@ -611,7 +626,7 @@
             container.innerHTML = '';
             
             if(savedAccounts.length === 0) {
-                container.innerHTML = '<p style="font-size: 11px; color: #cbd5e1;">لا توجد حسابات مسجلة.</p>';
+                container.innerHTML = '<p style="font-size: 10px; color: #cbd5e1;">لا توجد حسابات مسجلة.</p>';
                 return;
             }
 
@@ -619,10 +634,10 @@
                 container.innerHTML += `
                     <div class="account-card-saved" onclick="loginStudent(${index})">
                         <div style="text-align: right;">
-                            <h4 style="font-size: 13px; font-weight: bold;">${acc.name}</h4>
-                            <span style="font-size: 10px; color: #94a3b8;">${acc.grade} (كود: ${acc.id})</span>
+                            <h4 style="font-size: 12px; font-weight: bold;">${acc.name}</h4>
+                            <span style="font-size: 9px; color: #94a3b8;">${acc.grade} (كود: ${acc.id})</span>
                         </div>
-                        <i class="fa-solid fa-chevron-left" style="font-size: 11px; color: #60a5fa;"></i>
+                        <i class="fa-solid fa-chevron-left" style="font-size: 10px; color: #60a5fa;"></i>
                     </div>
                 `;
             });
@@ -639,7 +654,7 @@
         }
 
         function showAdminLogin() {
-            let pass = prompt("أدخل كود الأدمن السري (المستر):");
+            let pass = prompt("أدخل كود الأدمن السري للمستر (2026):");
             if(pass === "2026") {
                 isAdmin = true;
                 alert("تم تفعيل صلاحيات الأدمن (المستر) بنجاح!");
@@ -661,7 +676,7 @@
             let group = document.getElementById('regGroup').value.trim();
 
             if(!name) {
-                alert("يرجى إدخال اسم الطالب!");
+                alert("يرجى إدخال اسم الطالب الكامل!");
                 return;
             }
 
@@ -671,16 +686,17 @@
                 teacher: teacher || "جلال الاتربي",
                 phone: phone || "غير متوفر",
                 grade: grade,
-                group: group || "المجموعة العامة",
+                group: group || "مجموعة عامة",
                 attendance: "لم يُسجل",
-                absence: "لم يُسجل",
-                payment: "لم يتم الدفع",
-                notes: "لم تُسجل ملاحظات بعد",
+                absence: "منتظم (لا غياب)",
+                payment: "لم يتم السداد",
+                homework: "لم يتم التسليم",
+                behavior: "ممتاز",
                 score: "لم تُسجل بعد"
             };
 
             savedAccounts.push(newAcc);
-            localStorage.setItem('mps_all_students', JSON.stringify(savedAccounts));
+            localStorage.setItem('mps_pro_students', JSON.stringify(savedAccounts));
             loginStudent(savedAccounts.length - 1);
         }
 
@@ -698,6 +714,8 @@
             document.getElementById('attCount').innerText = acc.attendance;
             document.getElementById('absCount').innerText = acc.absence;
             document.getElementById('payStatus').innerText = acc.payment;
+            document.getElementById('hwStatus').innerText = acc.homework;
+            document.getElementById('behStatus').innerText = acc.behavior;
             document.getElementById('scoreStatus').innerText = acc.score;
 
             if(isAdmin) {
@@ -730,38 +748,56 @@
             let body = "";
             let adminActions = "";
 
-            if(type === 'notifications') {
-                title = "الإشعارات والتنبيهات";
-                body = `• لا توجد إشعارات جديدة حالياً.<br>• تابع هذه النافذة باستمرار لمعرفة تعليمات المستر.`;
-            } else if(type === 'attendance') {
-                title = "سجل الحضور";
-                body = `حالة الحضور المسجلة: <strong>${student.attendance}</strong>.<br><em>(لا يمكن تعديلها إلا من خلال لوحة تحكم المستر بالكود السري).</em>`;
+            if(type === 'attendance') {
+                title = "سجل الحضور بالسنتر";
+                body = `حالة الحضور الحالية: <strong>${student.attendance}</strong>`;
                 if(isAdmin) {
-                    adminActions = `<button class="btn-main" style="padding: 6px; font-size: 11px;" onclick="updateData('attendance', 'حاضر (تم التسجيل)')">تسجيل حضور (حاضر)</button>`;
+                    adminActions = `
+                        <button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="updateData('attendance', 'حاضر في الموعد')">تسجيل حضور (حاضر)</button>
+                        <button class="btn-main" style="padding: 5px; font-size: 10px; background: var(--accent-red); margin-top: 4px;" onclick="updateData('attendance', 'متأخر 15 دقيقة')">تسجيل تأخير</button>
+                    `;
                 }
             } else if(type === 'absence') {
-                title = "سجل الغياب";
-                body = `حالة الغياب المسجلة: <strong>${student.absence}</strong>.<br><em>(خاص بالمستر فقط).</em>`;
+                title = "متابعة الغياب";
+                body = `سجل الغياب: <strong>${student.absence}</strong>`;
                 if(isAdmin) {
-                    adminActions = `<button class="btn-main" style="padding: 6px; font-size: 11px; background: var(--accent-red);" onclick="updateData('absence', 'غائب بدون عذر')">تسجيل غياب</button>`;
-                }
-            } else if(type === 'payments') {
-                title = "المدفوعات والاشتراكات";
-                body = `حالة الاشتراك الحالي: <span style="color: var(--secondary-blue); font-weight: bold;">${student.payment}</span>.`;
-                if(isAdmin) {
-                    adminActions = `<button class="btn-main" style="padding: 6px; font-size: 11px;" onclick="updateData('payment', 'تم السداد (مدفوع)')">تعديل إلى (تم السداد)</button>`;
+                    adminActions = `<button class="btn-main" style="padding: 5px; font-size: 10px; background: var(--accent-red);" onclick="updateData('absence', 'غياب بدون عذر (إنذار)')">تسجيل غياب عاجل</button>`;
                 }
             } else if(type === 'exams') {
                 title = "الدرجات والتقييم الشهري واليومي";
-                body = `التقييم الحالي: <strong>${student.score}</strong>.<br><em>(المستر وحده هو من يضع الدرجة الحقيقية).</em>`;
+                body = `الدرجة الحالية: <strong>${student.score}</strong>.<br><span style="font-size:10px; color:var(--text-muted);">اختر من الدرجات أدناه (من 1 إلى 10):</span>`;
                 if(isAdmin) {
-                    adminActions = `<button class="btn-main" style="padding: 6px; font-size: 11px;" onclick="updateData('score', 'ممتاز (10/10)')">تعيين الدرجة (10/10)</button>`;
+                    adminActions = `
+                        <div style="display:flex; gap:5px; margin-bottom:5px; flex-wrap:wrap; justify-content:center;">
+                            <button onclick="updateData('score', '10 / 10 (ممتاز)')" style="background:#10b981; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:10px; cursor:pointer;">10</button>
+                            <button onclick="updateData('score', '9 / 10')" style="background:#3b82f6; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:10px; cursor:pointer;">9</button>
+                            <button onclick="updateData('score', '8 / 10')" style="background:#3b82f6; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:10px; cursor:pointer;">8</button>
+                            <button onclick="updateData('score', '7 / 10')" style="background:#3b82f6; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:10px; cursor:pointer;">7</button>
+                            <button onclick="updateData('score', 'أقل من 6 / 10')" style="background:#ef4444; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:10px; cursor:pointer;">راسب / ضعيف</button>
+                        </div>
+                        <button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="customScoreInput()">إدخال درجة مخصصة يدوياً</button>
+                    `;
                 }
-            } else if(type === 'notes') {
-                title = "ملاحظات المعلم";
-                body = `ملاحظة المستر: "${student.notes}"`;
+            } else if(type === 'homework') {
+                title = "متابعة الواجب المنزلي";
+                body = `حالة تسليم الواجب: <strong>${student.homework}</strong>`;
                 if(isAdmin) {
-                    adminActions = `<button class="btn-main" style="padding: 6px; font-size: 11px;" onclick="updateData('notes', 'طالب منتظم ومجتهد جداً')">تعديل الملاحظة</button>`;
+                    adminActions = `
+                        <button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="updateData('homework', 'تم تسليم الواجب كاملاً')">تحديد (تم التسليم)</button>
+                        <button class="btn-main" style="padding: 5px; font-size: 10px; background: var(--accent-red); margin-top: 4px;" onclick="updateData('homework', 'لم يُسلم الواجب (تحت الأداء)')">تحديد (لم يُسلم)</button>
+                    `;
+                }
+            } else if(type === 'payments') {
+                title = "إيصال السداد والرسوم الشهرية";
+                body = `الحالة المالية: <strong style="color:var(--secondary-blue);">${student.payment}</strong>`;
+                if(isAdmin) {
+                    adminActions = `<button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="updateData('payment', 'تم دفع اشتراك الشهر (إيصال معتمد)')">إصدار إيصال (تم السداد)</button>`;
+                }
+            } else if(type === 'behavior') {
+                title = "السلوك والمشاركة الصفية";
+                body = `ملاحظة السلوك: <strong>${student.behavior}</strong>`;
+                if(isAdmin) {
+                    adminActions = `<button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="updateBehaviorNote()">تعديل ملاحظة السلوك</button>`;
                 }
             }
 
@@ -801,31 +837,56 @@
             } else if(field === 'payment') {
                 student.payment = val;
                 document.getElementById('payStatus').innerText = val;
+            } else if(field === 'homework') {
+                student.homework = val;
+                document.getElementById('hwStatus').innerText = val;
             } else if(field === 'score') {
                 student.score = val;
                 document.getElementById('scoreStatus').innerText = val;
-            } else if(field === 'notes') {
-                let customNote = prompt("أدخل الملاحظة الجديدة من المستر:", student.notes);
-                if(customNote) student.notes = customNote;
             }
 
-            localStorage.setItem('mps_all_students', JSON.stringify(savedAccounts));
-            alert("تم التحديث بنجاح بواسطة المستر!");
+            localStorage.setItem('mps_pro_students', JSON.stringify(savedAccounts));
+            alert("تم التحديث وحفظ البيانات بنجاح بواسطة المستر!");
             closeModalDirect();
         }
 
-        /* ميزة تقارير واتساب الذكية لولي الأمر */
+        function customScoreInput() {
+            let customVal = prompt("أدخل الدرجة يدوياً (مثال: 9.5 / 10 أو تقدير):");
+            if(customVal) {
+                updateData('score', customVal + " / 10");
+            }
+        }
+
+        function updateBehaviorNote() {
+            let student = savedAccounts[currentStudentIndex];
+            let note = prompt("أدخل الملاحظة السلوكية الجديدة:", student.behavior);
+            if(note) {
+                student.behavior = note;
+                document.getElementById('behStatus').innerText = note;
+                localStorage.setItem('mps_pro_students', JSON.stringify(savedAccounts));
+                alert("تم تحديث السلوك بنجاح!");
+                closeModalDirect();
+            }
+        }
+
+        /* ميزة تقارير واتساب الذكية المتكاملة لولي الأمر */
         function sendWhatsAppReport() {
             let student = savedAccounts[currentStudentIndex];
             let phone = student.phone !== "غير متوفر" ? student.phone : "";
             
-            let reportText = `مرحباً ولي أمر الطالب: *${student.name}* 📚%0A` +
-                             `منصة MPS التعليمية - تقرير الأداء:%0A` +
-                             `- الحضور: ${student.attendance}%0A` +
-                             `- الغياب: ${student.absence}%0A` +
-                             `- التقييم والدرجات: ${student.score}%0A` +
-                             `- الاشتراك: ${student.payment}%0A` +
-                             `- ملاحظات المستر: ${student.notes}`;
+            let reportText = `📌 *منصة MPS Pro التعليمية - تقرير ولي الأمر*%0A` +
+                             `-----------------------------------%0A` +
+                             `👤 الطالب: *${student.name}*%0A` +
+                             `📚 الصف: ${student.grade}%0A` +
+                             `-----------------------------------%0A` +
+                             `✅ الحضور: ${student.attendance}%0A` +
+                             `⚠️ الغياب: ${student.absence}%0A` +
+                             `⭐ الدرجة والتقييم: ${student.score}%0A` +
+                             `📖 الواجب المنزلي: ${student.homework}%0A` +
+                             `💳 الاشتراك: ${student.payment}%0A` +
+                             `💬 تقييم السلوك: ${student.behavior}%0A` +
+                             `-----------------------------------%0A` +
+                             `مع تحيات إدارة السنتر والمستر / ${student.teacher}`;
             
             window.open(`https://wa.me/${phone}?text=${reportText}`, '_blank');
         }
@@ -833,4 +894,4 @@
         renderSavedAccounts();
     </script>
 </body>
-</html> 
+</html>
