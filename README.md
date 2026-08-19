@@ -37,7 +37,6 @@
             padding: 10px;
         }
 
-        /* إطار التلفون الأساسي */
         .phone-frame {
             width: 100%;
             max-width: 410px;
@@ -65,7 +64,6 @@
             display: flex;
         }
 
-        /* شاشة الترحيب والحسابات */
         .welcome-screen {
             background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
             color: white;
@@ -105,7 +103,6 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* شاشة تسجيل حساب جديد */
         .register-screen {
             background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
             color: white;
@@ -169,7 +166,6 @@
             margin-top: 6px;
         }
 
-        /* الشريط العلوي داخل التلفون */
         .top-navbar {
             background: white;
             padding: 8px 12px;
@@ -213,7 +209,6 @@
             color: white;
         }
 
-        /* محتوى الداشبورد */
         .dashboard-content {
             padding: 12px;
         }
@@ -257,7 +252,6 @@
             color: var(--secondary-blue);
         }
 
-        /* بطاقة QR Code الرقمية للطالب */
         .digital-id-card {
             background: white;
             border-radius: 10px;
@@ -280,7 +274,6 @@
             font-size: 20px;
         }
 
-        /* شبكة أزرار المتابعة الإضافية */
         .dashboard-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -332,7 +325,6 @@
             margin-top: 3px;
         }
 
-        /* أقسام إضافية تملأ الفراغات وتدعم الميزات */
         .extra-section {
             background: white;
             border-radius: 10px;
@@ -347,6 +339,7 @@
             margin-bottom: 6px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 5px;
         }
 
@@ -354,11 +347,10 @@
             display: flex;
             justify-content: space-between;
             font-size: 11px;
-            padding: 4px 0;
+            padding: 5px 0;
             border-bottom: 1px dashed #f1f5f9;
         }
 
-        /* نافذة العرض المنبثقة */
         .modal-overlay {
             position: absolute;
             top: 0;
@@ -444,7 +436,7 @@
             </div>
 
             <div class="form-group">
-                <label>رقم هاتف ولي الأمر (لتقارير الواتساب)</label>
+                <label>رقم هاتف ولي الأمر</label>
                 <input type="text" id="regParentPhone" placeholder="010xxxxxxxx">
             </div>
 
@@ -478,7 +470,7 @@
                     <button class="nav-btn active" onclick="switchSection('profile')">الملف</button>
                     <button class="nav-btn" onclick="switchSection('stats')">المتابعة</button>
                     <button class="nav-btn" id="adminBadgeBtn" style="background: #fef08a; color: #854d0e; display: none;"><i class="fa-solid fa-shield"></i> أدمن</button>
-                    <button class="nav-btn" onclick="sendWhatsAppReport()" style="background: #dcfce7; color: #166534;" title="إرسال تقرير واتساب"><i class="fa-brands fa-whatsapp"></i> تقرير</button>
+                    <button class="nav-btn" onclick="sendWhatsAppReport()" style="background: #dcfce7; color: #166534;" title="إرسال تقرير واتساب"><i class="fa-brands fa-whatsapp"></i></button>
                     <button class="nav-btn" onclick="showScreen('screen-welcome')" style="color: var(--accent-red);"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                 </div>
             </div>
@@ -490,12 +482,11 @@
                     <div class="profile-header-card">
                         <div>
                             <h3 id="uiStudentName" style="font-size: 15px; font-weight: 900;">محمد عنتر</h3>
-                            <span style="font-size: 10px; opacity: 0.9;">الكود التعريفي للسنتر: <span id="uiId">3034</span></span>
+                            <span style="font-size: 10px; opacity: 0.9;">الكود التعريفي: <span id="uiId">3034</span></span>
                         </div>
                         <i class="fa-solid fa-graduation-cap" style="font-size: 26px;"></i>
                     </div>
 
-                    <!-- بطاقة الـ QR Code التعريفية للحضور -->
                     <div class="digital-id-card">
                         <div class="qr-box"><i class="fa-solid fa-qrcode"></i></div>
                         <div>
@@ -504,28 +495,33 @@
                         </div>
                     </div>
 
-                    <div class="info-card-item">
+                    <div class="info-card-item" onclick="editFieldPrompt('teacher', 'اسم المعلم الجديد:')" style="cursor:pointer;" title="انقر للتعديل (أدمن)">
                         <div class="label-side"><i class="fa-solid fa-user-tie"></i><span>المعلم</span></div>
                         <div class="value-side" id="uiTeacher">جلال الاتربي</div>
                     </div>
 
-                    <div class="info-card-item">
+                    <div class="info-card-item" onclick="editFieldPrompt('phone', 'رقم ولي الأمر الجديد:')" style="cursor:pointer;" title="انقر للتعديل (أدمن)">
                         <div class="label-side"><i class="fa-solid fa-phone"></i><span>هاتف ولي الأمر</span></div>
                         <div class="value-side" id="uiPhone">غير متوفر</div>
                     </div>
 
-                    <div class="info-card-item">
+                    <div class="info-card-item" onclick="editFieldPrompt('grade', 'الصف الدراسي الجديد:')" style="cursor:pointer;" title="انقر للتعديل (أدمن)">
                         <div class="label-side"><i class="fa-solid fa-users-rectangle"></i><span>الصف الدراسي</span></div>
                         <div class="value-side" id="uiGrade">الصف الاول الثانوي</div>
                     </div>
 
-                    <div class="info-card-item">
+                    <div class="info-card-item" onclick="editFieldPrompt('group', 'المجموعة الجديدة:')" style="cursor:pointer;" title="انقر للتعديل (أدمن)">
                         <div class="label-side"><i class="fa-solid fa-calendar-days"></i><span>المجموعة</span></div>
                         <div class="value-side" id="uiGroup">مجموعة السبت والثلاثاء</div>
                     </div>
+
+                    <!-- زر مسح الحساب للأدمن -->
+                    <div id="adminDeleteAccountBox" style="margin-top: 10px; display: none;">
+                        <button class="btn-main" style="background: var(--accent-red); font-size: 11px; padding: 6px;" onclick="deleteCurrentStudentAccount()"><i class="fa-solid fa-trash"></i> حذف هذا الحساب نهائياً من المنصة</button>
+                    </div>
                 </div>
 
-                <!-- قسم المتابعة والأزرار التفاعلية الشاملة -->
+                <!-- قسم المتابعة والجداول الشاملة -->
                 <div id="section-stats" style="display: none;">
                     <h4 style="font-size: 13px; font-weight: 900; color: var(--primary-blue); margin-bottom: 8px;">لوحة المتابعة الشاملة للسنتر</h4>
                     
@@ -567,11 +563,24 @@
                         </div>
                     </div>
 
-                    <!-- إضافات وأقسام مساعدة لمعلومات الحصص -->
+                    <!-- جدول مواعيد الحصص والشرح القادم (قابل للتعديل بواسطة الأدمن) -->
                     <div class="extra-section">
-                        <h5><i class="fa-solid fa-circle-exclamation"></i> تنبيهات وتوجيهات عاجلة</h5>
-                        <div class="schedule-row"><span>الامتحان القادم</span> <span style="color: var(--accent-red);">الخميس القادم</span></div>
-                        <div class="schedule-row"><span>حالة النظام</span> <span style="color: var(--accent-green);">مؤمن بالكامل (أدمن 2026)</span></div>
+                        <h5>
+                            <span><i class="fa-solid fa-calendar-week"></i> جدول الحصص والشرح الأسبوعي</span>
+                            <i class="fa-solid fa-pen-to-square" id="editScheduleBtn" style="cursor:pointer; display:none; color:var(--secondary-blue);" onclick="editScheduleData()" title="تعديل الجدول (أدمن)"></i>
+                        </h5>
+                        <div class="schedule-row"><span>الحصة القادمة:</span> <span id="uiNextClass" style="font-weight: bold; color: var(--primary-blue);">السبت - الباب الأول</span></div>
+                        <div class="schedule-row"><span>المحاضرة السابقة:</span> <span id="uiPrevClass" style="color: var(--text-muted);">تم شرح التأسيس</span></div>
+                    </div>
+
+                    <!-- تنبيه الامتحان القادم (يستطيع المستر تغليفه وتغيير يومه لأي يوم بالأسبوع) -->
+                    <div class="extra-section">
+                        <h5>
+                            <span><i class="fa-solid fa-circle-exclamation"></i> موعد الامتحان القادم</span>
+                            <i class="fa-solid fa-pen-to-square" id="editExamDayBtn" style="cursor:pointer; display:none; color:var(--secondary-blue);" onclick="changeExamDay()" title="تغيير يوم الامتحان (أدمن)"></i>
+                        </h5>
+                        <div class="schedule-row"><span>اليوم والموعد:</span> <span id="uiNextExamDay" style="color: var(--accent-red); font-weight: bold;">الخميس القادم (الساعة 2 ظهراً)</span></div>
+                        <div class="schedule-row"><span>حالة النظام:</span> <span style="color: var(--accent-green);">مؤمن وصلاحيات كاملة للأدمن</span></div>
                     </div>
                 </div>
 
@@ -584,7 +593,7 @@
 
     </div>
 
-    <!-- نافذة العرض المنبثقة التفاعلية -->
+    <!-- نافذة العرض المنبثقة -->
     <div class="modal-overlay" id="customModal" onclick="closeModal(event)">
         <div class="modal-card" onclick="event.stopPropagation()">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #f1f5f9; padding-bottom: 5px;">
@@ -617,7 +626,10 @@
                 payment: "لم يتم السداد", 
                 homework: "لم يتم التسليم", 
                 behavior: "مشارك بإيجابية وهادئ",
-                score: "لم تُسجل بعد" 
+                score: "لم تُسجل بعد",
+                nextClass: "السبت - الباب الأول",
+                prevClass: "تم شرح التأسيس",
+                examDay: "الخميس القادم (الساعة 2 ظهراً)"
             }
         ];
 
@@ -626,7 +638,7 @@
             container.innerHTML = '';
             
             if(savedAccounts.length === 0) {
-                container.innerHTML = '<p style="font-size: 10px; color: #cbd5e1;">لا توجد حسابات مسجلة.</p>';
+                container.innerHTML = '<p style="font-size: 10px; color: #cbd5e1;">لا توجد حسابات مسجلة حالياً.</p>';
                 return;
             }
 
@@ -692,7 +704,10 @@
                 payment: "لم يتم السداد",
                 homework: "لم يتم التسليم",
                 behavior: "ممتاز",
-                score: "لم تُسجل بعد"
+                score: "لم تُسجل بعد",
+                nextClass: "السبت - الباب الأول",
+                prevClass: "تم شرح الحصة التمهيدية",
+                examDay: "الخميس القادم"
             };
 
             savedAccounts.push(newAcc);
@@ -718,8 +733,20 @@
             document.getElementById('behStatus').innerText = acc.behavior;
             document.getElementById('scoreStatus').innerText = acc.score;
 
+            document.getElementById('uiNextClass').innerText = acc.nextClass || "السبت - الباب الأول";
+            document.getElementById('uiPrevClass').innerText = acc.prevClass || "تم الشرح";
+            document.getElementById('uiNextExamDay').innerText = acc.examDay || "الخميس القادم";
+
             if(isAdmin) {
                 document.getElementById('adminBadgeBtn').style.display = 'block';
+                document.getElementById('adminDeleteAccountBox').style.display = 'block';
+                document.getElementById('editScheduleBtn').style.display = 'inline-block';
+                document.getElementById('editExamDayBtn').style.display = 'inline-block';
+            } else {
+                document.getElementById('adminBadgeBtn').style.display = 'none';
+                document.getElementById('adminDeleteAccountBox').style.display = 'none';
+                document.getElementById('editScheduleBtn').style.display = 'none';
+                document.getElementById('editExamDayBtn').style.display = 'none';
             }
 
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -739,6 +766,59 @@
             } else {
                 document.getElementById('section-profile').style.display = 'none';
                 document.getElementById('section-stats').style.display = 'block';
+            }
+        }
+
+        /* تعديل البيانات الافتراضية بمعرفة الأدمن */
+        function editFieldPrompt(field, promptText) {
+            if(!isAdmin) return; // فقط الأدمن يمكنه التعديل
+            let student = savedAccounts[currentStudentIndex];
+            let currentValue = student[field];
+            let newVal = prompt(promptText, currentValue);
+            if(newVal !== null && newVal.trim() !== "") {
+                student[field] = newVal.trim();
+                localStorage.setItem('mps_pro_students', JSON.stringify(savedAccounts));
+                loginStudent(currentStudentIndex);
+                alert("تم تحديث البيانات بنجاح!");
+            }
+        }
+
+        /* خاصية تغيير موعد الامتحان القادم (لأي يوم بالأسبوع) */
+        function changeExamDay() {
+            if(!isAdmin) return;
+            let student = savedAccounts[currentStudentIndex];
+            let newDay = prompt("حدد موعد الامتحان الجديد (مثال: السبت القادم - الأحد - الثلاثاء...):", student.examDay);
+            if(newDay) {
+                student.examDay = newDay;
+                document.getElementById('uiNextExamDay').innerText = newDay;
+                localStorage.setItem('mps_pro_students', JSON.stringify(savedAccounts));
+                alert("تم تحديث موعد الامتحان بنجاح ليكون: " + newDay);
+            }
+        }
+
+        /* خاصية تعديل جداول الشرح */
+        function editScheduleData() {
+            if(!isAdmin) return;
+            let student = savedAccounts[currentStudentIndex];
+            let nextC = prompt("تعديل محتوى الحصة القادمة:", student.nextClass);
+            let prevC = prompt("تعديل محتوى الحصة السابقة:", student.prevClass);
+            if(nextC) student.nextClass = nextC;
+            if(prevC) student.prevClass = prevC;
+            localStorage.setItem('mps_pro_students', JSON.stringify(savedAccounts));
+            document.getElementById('uiNextClass').innerText = student.nextClass;
+            document.getElementById('uiPrevClass').innerText = student.prevClass;
+            alert("تم تحديث جدول الشرح بنجاح!");
+        }
+
+        /* خاصية مسح حساب الطالب نهائياً */
+        function deleteCurrentStudentAccount() {
+            if(!isAdmin) return;
+            let confirmDel = confirm("هل أنت متأكد من رغبتك في حذف هذا الحساب نهائياً من المنصة؟");
+            if(confirmDel) {
+                savedAccounts.splice(currentStudentIndex, 1);
+                localStorage.setItem('mps_pro_students', JSON.stringify(savedAccounts));
+                alert("تم مسح الحساب بنجاح.");
+                showScreen('screen-welcome');
             }
         }
 
@@ -869,7 +949,6 @@
             }
         }
 
-        /* ميزة تقارير واتساب الذكية المتكاملة لولي الأمر */
         function sendWhatsAppReport() {
             let student = savedAccounts[currentStudentIndex];
             let phone = student.phone !== "غير متوفر" ? student.phone : "";
@@ -885,6 +964,7 @@
                              `📖 الواجب المنزلي: ${student.homework}%0A` +
                              `💳 الاشتراك: ${student.payment}%0A` +
                              `💬 تقييم السلوك: ${student.behavior}%0A` +
+                             `📅 الامتحان القادم: ${student.examDay}%0A` +
                              `-----------------------------------%0A` +
                              `مع تحيات إدارة السنتر والمستر / ${student.teacher}`;
             
@@ -894,4 +974,4 @@
         renderSavedAccounts();
     </script>
 </body>
-</html>
+</html> 
