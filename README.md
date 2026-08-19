@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPS Platform | منصة إدارة الطلاب</title>
+    <title>MPS Platform | منصة إدارة الطلاب المتكاملة</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -41,7 +41,7 @@
             width: 100%;
             max-width: 410px;
             height: 85vh;
-            max-height: 820px;
+            max-height: 850px;
             background: var(--light-bg);
             border-radius: 35px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -75,7 +75,7 @@
         }
 
         .welcome-logo {
-            font-size: 60px;
+            font-size: 55px;
             color: #60a5fa;
             margin-bottom: 10px;
         }
@@ -83,7 +83,7 @@
         .accounts-list {
             width: 100%;
             margin: 15px 0;
-            max-height: 180px;
+            max-height: 160px;
             overflow-y: auto;
         }
 
@@ -193,9 +193,9 @@
         .nav-btn {
             background: #f1f5f9;
             border: none;
-            padding: 6px 10px;
+            padding: 6px 8px;
             border-radius: 6px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             color: var(--text-muted);
             cursor: pointer;
@@ -251,6 +251,29 @@
             color: var(--secondary-blue);
         }
 
+        /* بطاقة QR Code الرقمية للطالب */
+        .digital-id-card {
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .qr-box {
+            width: 50px;
+            height: 50px;
+            background: #eff6ff;
+            color: var(--secondary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 22px;
+        }
+
         /* شبكة أزرار المتابعة */
         .dashboard-grid {
             display: grid;
@@ -303,7 +326,7 @@
             margin-top: 4px;
         }
 
-        /* الإضافات الجديدة لملء الفراغات */
+        /* إضافات لملء الفراغات وتحسين المظهر */
         .extra-section {
             background: white;
             border-radius: 12px;
@@ -329,7 +352,7 @@
             border-bottom: 1px dashed #f1f5f9;
         }
 
-        /* النافذة المنبثقة */
+        /* نافذة العرض المنبثقة */
         .modal-overlay {
             position: absolute;
             top: 0;
@@ -386,21 +409,21 @@
         <div id="screen-welcome" class="screen welcome-screen active">
             <div class="welcome-logo"><i class="fa-solid fa-graduation-cap"></i></div>
             <h1 style="font-size: 22px; font-weight: 900; margin-bottom: 3px;">MPS Platform</h1>
-            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 15px;">بوابة متابعة الطالب والمعلم</p>
+            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 15px;">النظام التعليمي المتكامل للأستاذ</p>
 
             <div style="width: 100%; text-align: right; font-size: 12px; font-weight: bold; margin-bottom: 4px;">الحسابات المسجلة:</div>
             <div class="accounts-list" id="savedAccountsContainer"></div>
 
             <div style="width: 100%;">
                 <button class="btn-main" onclick="showScreen('screen-register')">تسجيل حساب طالب جديد</button>
-                <button class="btn-main" style="background: #0f172a;" onclick="showAdminLogin()">دخول المعلم (ادمن)</button>
+                <button class="btn-main" style="background: #0f172a;" onclick="showAdminLogin()">دخول المعلم (أدمن 2026)</button>
             </div>
         </div>
 
         <!-- 2. شاشة تسجيل طالب -->
         <div id="screen-register" class="screen register-screen">
             <h2 style="font-size: 20px; font-weight: 900; text-align: center; margin-bottom: 3px;">حساب طالب جديد</h2>
-            <p style="font-size: 11px; color: #cbd5e1; text-align: center; margin-bottom: 15px;">أدخل بياناتك للانضمام للمنصة</p>
+            <p style="font-size: 11px; color: #cbd5e1; text-align: center; margin-bottom: 15px;">انضم لمنصة MPS الاحترافية</p>
 
             <div class="form-group">
                 <label>اسم الطالب الكامل</label>
@@ -413,7 +436,7 @@
             </div>
 
             <div class="form-group">
-                <label>رقم ولي الأمر</label>
+                <label>رقم هاتف ولي الأمر (لتقارير الواتساب)</label>
                 <input type="text" id="regParentPhone" placeholder="010xxxxxxxx">
             </div>
 
@@ -435,7 +458,7 @@
             <button class="btn-main btn-secondary" onclick="showScreen('screen-welcome')">رجوع</button>
         </div>
 
-        <!-- 3. لوحة تحكم المنصة -->
+        <!-- 3. لوحة تحكم المنصة الداشبورد -->
         <div id="screen-dashboard" class="screen">
             
             <div class="top-navbar">
@@ -447,7 +470,8 @@
                     <button class="nav-btn active" onclick="switchSection('profile')">الملف</button>
                     <button class="nav-btn" onclick="switchSection('stats')">المتابعة</button>
                     <button class="nav-btn" id="adminBadgeBtn" style="background: #fef08a; color: #854d0e; display: none;"><i class="fa-solid fa-shield"></i> أدمن</button>
-                    <button class="nav-btn" onclick="showScreen('screen-welcome')" style="color: var(--accent-green);"><i class="fa-solid fa-users"></i> الخروج</button>
+                    <button class="nav-btn" onclick="sendWhatsAppReport()" style="background: #dcfce7; color: #166534;" title="إرسال تقرير واتساب لولي الأمر"><i class="fa-brands fa-whatsapp"></i> تقرير</button>
+                    <button class="nav-btn" onclick="showScreen('screen-welcome')" style="color: var(--accent-red);"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                 </div>
             </div>
 
@@ -461,6 +485,15 @@
                             <span style="font-size: 11px; opacity: 0.9;">الكود التعريفي: <span id="uiId">3034</span></span>
                         </div>
                         <i class="fa-solid fa-graduation-cap" style="font-size: 28px;"></i>
+                    </div>
+
+                    <!-- بطاقة الـ QR Code التعريفية للطالب -->
+                    <div class="digital-id-card">
+                        <div class="qr-box"><i class="fa-solid fa-qrcode"></i></div>
+                        <div>
+                            <h4 style="font-size: 12px; font-weight: bold; color: var(--primary-blue);">بطاقة الحضور الرقمية</h4>
+                            <p style="font-size: 10px; color: var(--text-muted);">معتمدة للمسح السريع داخل السنتر</p>
+                        </div>
                     </div>
 
                     <div class="info-card-item">
@@ -484,7 +517,7 @@
                     </div>
                 </div>
 
-                <!-- قسم المتابعة والأزرار التفاعلية + إضافات لملء الفراغات -->
+                <!-- قسم المتابعة والأزرار التفاعلية -->
                 <div id="section-stats" style="display: none;">
                     <h4 style="font-size: 14px; font-weight: 900; color: var(--primary-blue); margin-bottom: 10px;">لوحة المتابعة الشاملة</h4>
                     
@@ -526,7 +559,7 @@
                         </div>
                     </div>
 
-                    <!-- إضافات جديدة لملء الفراغات السفلية -->
+                    <!-- إضافات لملء الفراغات -->
                     <div class="extra-section">
                         <h5><i class="fa-solid fa-calendar-week"></i> جدول مواعيد الحصص</h5>
                         <div class="schedule-row"><span>السبت والثلاثاء</span> <span>3:00 عصراً</span></div>
@@ -534,8 +567,8 @@
                     </div>
 
                     <div class="extra-section">
-                        <h5><i class="fa-solid fa-circle-info"></i> حالة النظام والتحديثات</h5>
-                        <div class="schedule-row"><span>إصدار المنصة</span> <span>v2.5 (مؤمن بالكامل)</span></div>
+                        <h5><i class="fa-solid fa-circle-info"></i> حالة النظام والأمان</h5>
+                        <div class="schedule-row"><span>الإصدار البرمجي</span> <span>v3.0 (محمي كلياً)</span></div>
                         <div class="schedule-row"><span>حالة الحساب</span> <span style="color: var(--accent-green);">نشط وآمن</span></div>
                     </div>
                 </div>
@@ -570,7 +603,7 @@
         let currentStudentIndex = 0;
 
         let savedAccounts = JSON.parse(localStorage.getItem('mps_all_students')) || [
-            { id: 3034, name: "محمد عنتر", teacher: "جلال الاتربي", phone: "غير متوفر", grade: "الصف الاول الثانوي", group: "المجموعة العامة", attendance: "لم يُسجل", absence: "لم يُسجل", payment: "لم يتم الدفع", notes: "لم تُسجل ملاحظات بعد", score: "لم تُسجل بعد" }
+            { id: 3034, name: "محمد عنتر", teacher: "جلال الاتربي", phone: "201000000000", grade: "الصف الاول الثانوي", group: "المجموعة العامة", attendance: "لم يُسجل", absence: "لم يُسجل", payment: "لم يتم الدفع", notes: "لم تُسجل ملاحظات بعد", score: "لم تُسجل بعد" }
         ];
 
         function renderSavedAccounts() {
@@ -678,7 +711,7 @@
 
         function switchSection(sectionName) {
             document.querySelectorAll('.nav-btn').forEach(btn => {
-                if(btn.id !== 'adminBadgeBtn') btn.classList.remove('active');
+                if(btn.id !== 'adminBadgeBtn' && !btn.getAttribute('onclick').includes('WhatsApp')) btn.classList.remove('active');
             });
             event.target.classList.add('active');
 
@@ -781,7 +814,23 @@
             closeModalDirect();
         }
 
+        /* ميزة تقارير واتساب الذكية لولي الأمر */
+        function sendWhatsAppReport() {
+            let student = savedAccounts[currentStudentIndex];
+            let phone = student.phone !== "غير متوفر" ? student.phone : "";
+            
+            let reportText = `مرحباً ولي أمر الطالب: *${student.name}* 📚%0A` +
+                             `منصة MPS التعليمية - تقرير الأداء:%0A` +
+                             `- الحضور: ${student.attendance}%0A` +
+                             `- الغياب: ${student.absence}%0A` +
+                             `- التقييم والدرجات: ${student.score}%0A` +
+                             `- الاشتراك: ${student.payment}%0A` +
+                             `- ملاحظات المستر: ${student.notes}`;
+            
+            window.open(`https://wa.me/${phone}?text=${reportText}`, '_blank');
+        }
+
         renderSavedAccounts();
     </script>
 </body>
-</html>
+</html> 
