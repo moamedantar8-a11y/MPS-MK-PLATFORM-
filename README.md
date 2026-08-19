@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPS Platform Pro | MPS PRO </title>
+    <title>MPS Platform Pro | أ/ جلال الإتربي</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -65,42 +65,47 @@
         }
 
         .welcome-screen {
-            background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
-            color: white;
+            background: var(--light-bg);
+            color: var(--text-main);
             padding: 20px;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             text-align: center;
         }
 
         .welcome-logo {
-            font-size: 45px;
-            color: #60a5fa;
+            font-size: 55px;
+            color: var(--secondary-blue);
             margin-bottom: 5px;
+            margin-top: 15px;
         }
 
         .accounts-list {
             width: 100%;
             margin: 10px 0;
-            max-height: 130px;
+            max-height: 320px;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .account-card-saved {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 8px 12px;
-            border-radius: 10px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            border-radius: 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 6px;
             cursor: pointer;
             transition: var(--transition);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
         .account-card-saved:hover {
-            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--secondary-blue);
+            transform: translateY(-2px);
         }
 
         .register-screen {
@@ -113,7 +118,7 @@
 
         .form-group {
             width: 100%;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             text-align: right;
         }
 
@@ -126,7 +131,7 @@
 
         .form-group input, .form-group select {
             width: 100%;
-            padding: 7px 10px;
+            padding: 8px 10px;
             border-radius: 8px;
             border: 1px solid rgba(255,255,255,0.2);
             background: rgba(255,255,255,0.08);
@@ -145,13 +150,13 @@
             background: var(--secondary-blue);
             color: white;
             border: none;
-            padding: 9px;
-            border-radius: 10px;
+            padding: 10px;
+            border-radius: 12px;
             font-size: 12px;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(59, 130, 246,.4);
-            margin-top: 5px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246,.3);
+            margin-top: 6px;
             transition: var(--transition);
         }
 
@@ -163,7 +168,6 @@
             background: transparent;
             color: #cbd5e1;
             border: 1px solid rgba(255,255,255,0.2);
-            margin-top: 5px;
         }
 
         .top-navbar {
@@ -326,7 +330,6 @@
             margin-top: 2px;
         }
 
-        /* تصميم قسم الـ Community */
         .community-container {
             display: flex;
             flex-direction: column;
@@ -474,29 +477,28 @@
 
     <div class="phone-frame">
         
-        <!-- 1. شاشة الترحيب -->
+        <!-- 1. شاشة الترحيب واختيار الحسابات -->
         <div id="screen-welcome" class="screen welcome-screen active">
-            <div class="welcome-logo"><i class="fa-solid fa-landmark"></i></div>
-            <h1 style="font-size: 18px; font-weight: 900; margin-bottom: 2px;">أ/ جلال الإتربي</h1>
-            <p style="font-size: 10px; color: #94a3b8; margin-bottom: 10px;">استاذ التاريخ والجغرافيا (01093785277)</p>
+            <div class="welcome-logo"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h2 style="font-size: 18px; font-weight: 900; margin-bottom: 2px;">MPS Academy</h2>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">اختر حسابًا لمتابعة تطبيقك</p>
 
-            <div style="width: 100%; text-align: right; font-size: 10px; font-weight: bold; margin-bottom: 3px;">اختر حساب الطالب:</div>
             <div class="accounts-list" id="savedAccountsContainer"></div>
 
-            <div style="width: 100%;">
-                <button class="btn-main" onclick="showScreen('screen-register')">تسجيل طالب جديد بالسنتر</button>
-                <button class="btn-main" style="background: #0f172a;" onclick="showAdminLogin()">دخول المعلم (أدمن 2026)</button>
+            <div style="width: 100%; margin-top: auto; padding-bottom: 10px;">
+                <button class="btn-main" onclick="showScreen('screen-register')"><i class="fa-solid fa-user-plus"></i> تسجيل الدخول بحساب آخر</button>
+                <button class="btn-main" style="background: #0f172a;" onclick="showAdminLogin()"><i class="fa-solid fa-shield-halved"></i> دخول المعلم (أدمن)</button>
             </div>
         </div>
 
         <!-- 2. شاشة تسجيل طالب جديد -->
         <div id="screen-register" class="screen register-screen">
-            <h2 style="font-size: 16px; font-weight: 900; text-align: center; margin-bottom: 2px;">إضافة طالب لسنتر أ/ جلال</h2>
-            <p style="font-size: 9px; color: #cbd5e1; text-align: center; margin-bottom: 10px;">المواعيد الرسمية للمجموعات</p>
+            <h2 style="font-size: 16px; font-weight: 900; text-align: center; margin-bottom: 2px;">إضافة طالب جديد للسنتر</h2>
+            <p style="font-size: 9px; color: #cbd5e1; text-align: center; margin-bottom: 10px;">أ/ جلال الإتربي (استاذ التاريخ والجغرافيا)</p>
 
             <div class="form-group">
                 <label>اسم الطالب الكامل</label>
-                <input type="text" id="regStudentName" placeholder="مثال: محمد عنتر">
+                <input type="text" id="regStudentName" placeholder="مثال: أحمد محمد">
             </div>
 
             <div class="form-group">
@@ -505,19 +507,19 @@
             </div>
 
             <div class="form-group">
-                <label>الصف الدراسي والمجموعة (المواعيد الرسمية)</label>
-                <select id="regGrade" onchange="updateGroupTimePreview()">
-                    <option value="الصف الأول الإعدادي">الصف الأول الإعدادي (الإثنين والخميس 2-4)</option>
-                    <option value="الصف الثاني الإعدادي">الصف الثاني الإعدادي (الأحد والأربعاء 2-4)</option>
-                    <option value="الصف الثالث الإعدادي">الصف الثالث الإعدادي (السبت والثلاثاء 12-2)</option>
-                    <option value="الصف الأول الثانوي">الصف الأول الثانوي (السبت والثلاثاء 3-5)</option>
-                    <option value="الصف الثاني الثانوي">الصف الثاني الثانوي (الأحد والأربعاء 5)</option>
-                    <option value="الصف الثالث الثانوي - جغرافيا">الصف الثالث الثانوي - جغرافيا (الأحد والأربعاء 1)</option>
-                    <option value="الصف الثالث الثانوي - تاريخ">الصف الثالث الثانوي - تاريخ (الإثنين والخميس 1)</option>
+                <label>الصف الدراسي والمجموعة</label>
+                <select id="regGrade">
+                    <option value="الصف الأول الإعدادي">الصف الأول الإعدادي (الإثنين والخميس)</option>
+                    <option value="الصف الثاني الإعدادي">الصف الثاني الإعدادي (الأحد والأربعاء)</option>
+                    <option value="الصف الثالث الإعدادي">الصف الثالث الإعدادي (السبت والثلاثاء)</option>
+                    <option value="الصف الأول الثانوي">الصف الأول الثانوي (السبت والثلاثاء)</option>
+                    <option value="الصف الثاني الثانوي">الصف الثاني الثانوي (الأحد والأربعاء)</option>
+                    <option value="الصف الثالث الثانوي - جغرافيا">الصف الثالث الثانوي - جغرافيا</option>
+                    <option value="الصف الثالث الثانوي - تاريخ">الصف الثالث الثانوي - تاريخ</option>
                 </select>
             </div>
 
-            <button class="btn-main" onclick="registerNewStudent()">حفظ وإنشاء الحساب</button>
+            <button class="btn-main" onclick="registerNewStudent()">حفظ الحساب</button>
             <button class="btn-main btn-secondary" onclick="showScreen('screen-welcome')">رجوع</button>
         </div>
 
@@ -526,14 +528,14 @@
             
             <div class="top-navbar">
                 <div class="nav-brand">
-                    <i class="fa-solid fa-graduation-cap"></i>
+                    <i class="fa-solid fa-landmark"></i>
                     <span>MPS Pro</span>
                 </div>
                 <div class="nav-links">
                     <button class="nav-btn active" onclick="switchSection('profile')">الملف</button>
                     <button class="nav-btn" onclick="switchSection('stats')">المتابعة</button>
-                    <button class="nav-btn" onclick="switchSection('community')">مجتمع السنتر</button>
-                    <button class="nav-btn" id="adminBadgeBtn" style="background: #fef08a; color: #854d0e; display: none;"><i class="fa-solid fa-shield"></i></button>
+                    <button class="nav-btn" onclick="switchSection('community')">المجتمع</button>
+                    <button class="nav-btn" id="adminBadgeBtn" style="background: #fef08a; color: #854d0e; display: none;"><i class="fa-solid fa-shield"></i> أدمن</button>
                     <button class="nav-btn" onclick="sendWhatsAppReport()" style="background: #dcfce7; color: #166534;" title="واتساب"><i class="fa-brands fa-whatsapp"></i></button>
                     <button class="nav-btn" onclick="showScreen('screen-welcome')" style="color: var(--accent-red);"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                 </div>
@@ -545,8 +547,8 @@
                 <div id="section-profile">
                     <div class="profile-header-card">
                         <div>
-                            <h3 id="uiStudentName" style="font-size: 14px; font-weight: 900;">محمد عنتر</h3>
-                            <span style="font-size: 10px; opacity: 0.9;">الكود التعريفي: <span id="uiId">3034</span></span>
+                            <h3 id="uiStudentName" style="font-size: 14px; font-weight: 900;">اسم الطالب</h3>
+                            <span style="font-size: 10px; opacity: 0.9;">الكود التعريفي: <span id="uiId">0000</span></span>
                         </div>
                         <i class="fa-solid fa-user-graduate" style="font-size: 24px;"></i>
                     </div>
@@ -555,7 +557,7 @@
                         <div class="qr-box"><i class="fa-solid fa-qrcode"></i></div>
                         <div>
                             <h4 style="font-size: 10px; font-weight: bold; color: var(--primary-blue);">بطاقة حضور السنتر الإلكترونية</h4>
-                            <p style="font-size: 9px; color: var(--text-muted);">مسح سريع عند مدخل قاعة أ/ جلال الإتربي</p>
+                            <p style="font-size: 9px; color: var(--text-muted);">أ/ جلال الإتربي (01093785277)</p>
                         </div>
                     </div>
 
@@ -570,8 +572,8 @@
                     </div>
 
                     <div class="info-card-item">
-                        <div class="label-side"><i class="fa-solid fa-book-open"></i><span>الصف والمواعيد</span></div>
-                        <div class="value-side" id="uiGrade">الصف الأول الثانوي</div>
+                        <div class="label-side"><i class="fa-solid fa-book-open"></i><span>الصف الدراسي</span></div>
+                        <div class="value-side" id="uiGrade">الصف الدراسي</div>
                     </div>
 
                     <div id="adminDeleteAccountBox" style="margin-top: 10px; display: none;">
@@ -624,11 +626,11 @@
                     <div class="extra-section">
                         <h5><span><i class="fa-solid fa-circle-exclamation"></i> تنبيهات حصص أ/ جلال</span></h5>
                         <div class="schedule-row"><span>رقم التواصل بالسنتر:</span> <span style="color: var(--primary-blue); font-weight: bold;">01093785277</span></div>
-                        <div class="schedule-row"><span>حالة النظام:</span> <span style="color: var(--accent-green);">محدث حسب الكارت الرسمي</span></div>
+                        <div class="schedule-row"><span>حالة النظام:</span> <span style="color: var(--accent-green);">يعمل بكفاءة عالية</span></div>
                     </div>
                 </div>
 
-                <!-- ج. قسم مجتمع السنتر (Community) -->
+                <!-- ج. قسم مجتمع السنتر -->
                 <div id="section-community" style="display: none;">
                     <div class="community-container">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
@@ -636,9 +638,7 @@
                             <span style="font-size: 9px; color: var(--text-muted);">اسأل واستفسر عن الواجب</span>
                         </div>
 
-                        <div class="chat-box" id="communityChatBox">
-                            <!-- الرسائل تضاف ديناميكياً هنا -->
-                        </div>
+                        <div class="chat-box" id="communityChatBox"></div>
 
                         <div class="chat-input-area">
                             <input type="text" id="chatInputMessage" placeholder="اكتب سؤالك أو استفسارك عن الدرس..." onkeypress="checkEnterChat(event)">
@@ -650,7 +650,7 @@
             </div>
 
             <div class="app-footer">
-                Developed by <span>MK CREATIVE Agency🏢 </span>
+                Developed by <span>MK CREATIVE Agency</span>
             </div>
         </div>
 
@@ -666,7 +666,7 @@
             <div style="font-size: 10px; color: var(--text-muted); line-height: 1.4; margin-bottom: 8px;" id="modalBodyContent"></div>
             
             <div class="admin-controls" id="adminControlPanel">
-                <p style="font-size: 9px; font-weight: bold; color: var(--primary-blue); margin-bottom: 4px;"><i class="fa-solid fa-lock-open"></i> لوحة تحكم المستر (كود 2026):</p>
+                <p style="font-size: 9px; font-weight: bold; color: var(--primary-blue); margin-bottom: 4px;"><i class="fa-solid fa-lock-open"></i> لوحة تحكم المستر:</p>
                 <div id="adminActionButtons"></div>
             </div>
         </div>
@@ -676,24 +676,11 @@
         let isAdmin = false;
         let currentStudentIndex = 0;
 
-        let savedAccounts = JSON.parse(localStorage.getItem('mps_pro_jalal_students')) || [
-            { 
-                id: 3034, 
-                name: "محمد عنتر", 
-                phone: "201000000000", 
-                grade: "الصف الأول الثانوي", 
-                attendance: "لم يُسجل", 
-                absence: "منتظم", 
-                payment: "لم يتم السداد", 
-                homework: "لم يُسلم", 
-                behavior: "ممتاز ومنضبط",
-                score: "لم تُسجل"
-            }
-        ];
+        // تبدأ المنصة خالية تماماً من الحسابات الوهمية
+        let savedAccounts = JSON.parse(localStorage.getItem('mps_pro_jalal_students')) || [];
 
         let communityMessages = JSON.parse(localStorage.getItem('mps_jalal_chat')) || [
-            { sender: "أ/ جلال الإتربي", text: "أهلاً بجميع طلابي الأعزاء في منصة السنتر الذكية. بالتوفيق دائماً!", time: "اليوم" },
-            { sender: "محمد عنتر", text: "يا شباب حد حل سؤال الخريطة في الواجب؟", time: "منذ قليل" }
+            { sender: "أ/ جلال الإتربي", text: "أهلاً بجميع طلابي الأعزاء في منصة السنتر الذكية.", time: "اليوم" }
         ];
 
         function renderSavedAccounts() {
@@ -701,18 +688,22 @@
             container.innerHTML = '';
             
             if(savedAccounts.length === 0) {
-                container.innerHTML = '<p style="font-size: 10px; color: #cbd5e1;">لا توجد حسابات مسجلة حالياً.</p>';
+                container.innerHTML = '<p style="font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 20px;">لا توجد حسابات مسجلة حالياً.<br>قم بتسجيل حساب جديد بالأسفل.</p>';
                 return;
             }
 
             savedAccounts.forEach((acc, index) => {
                 container.innerHTML += `
                     <div class="account-card-saved" onclick="loginStudent(${index})">
-                        <div style="text-align: right;">
-                            <h4 style="font-size: 11px; font-weight: bold;">${acc.name}</h4>
-                            <span style="font-size: 9px; color: #94a3b8;">${acc.grade}</span>
+                        <div style="text-align: right; flex: 1;">
+                            <h4 style="font-size: 11px; font-weight: bold; color: var(--text-main);">جلال الاتربي</h4>
+                            <span style="font-size: 10px; color: var(--secondary-blue);">00${acc.id}</span>
+                            <div style="font-size: 10px; font-weight: bold; color: var(--text-muted);">${acc.name}</div>
                         </div>
-                        <i class="fa-solid fa-chevron-left" style="font-size: 10px; color: #60a5fa;"></i>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <button onclick="event.stopPropagation(); deleteAccount(${index})" style="background: #fee2e2; color: var(--accent-red); border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="حذف الحساب"><i class="fa-solid fa-trash" style="font-size: 11px;"></i></button>
+                            <div style="width: 34px; height: 34px; background: var(--secondary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px;">${acc.name.charAt(0)}</div>
+                        </div>
                     </div>
                 `;
             });
@@ -731,15 +722,24 @@
         function showAdminLogin() {
             let pass = prompt("أدخل كود الأدمن السري لأ/ جلال (2026):");
             if(pass === "2026") {
-                isAdmin = true;
-                alert("تم تفعيل صلاحيات المعلم بنجاح!");
-                if(savedAccounts.length > 0) {
-                    loginStudent(0);
-                } else {
+                if(savedAccounts.length === 0) {
+                    alert("لا توجد حسابات طلاب مسجلة حالياً ليقوم الأدمن بإدارتها. يجيب تسجيل طالب أولاً.");
                     showScreen('screen-register');
+                    return;
                 }
+                isAdmin = true;
+                alert("تم تفعيل وضع المعلم (أدمن). يرجى اختيار الحساب المطلوب مراجعته من القائمة.");
+                showScreen('screen-welcome');
             } else if(pass !== null) {
                 alert("الكود غير صحيح!");
+            }
+        }
+
+        function deleteAccount(index) {
+            if(confirm("هل أنت متأكد من حذف هذا الحساب نهائياً؟")) {
+                savedAccounts.splice(index, 1);
+                localStorage.setItem('mps_pro_jalal_students', JSON.stringify(savedAccounts));
+                renderSavedAccounts();
             }
         }
 
@@ -754,7 +754,7 @@
             }
 
             let newAcc = {
-                id: Math.floor(1000 + Math.random() * 9000),
+                id: Math.floor(100000 + Math.random() * 900000),
                 name: name,
                 phone: phone || "غير متوفر",
                 grade: grade,
@@ -820,7 +820,7 @@
             let chatBox = document.getElementById('communityChatBox');
             chatBox.innerHTML = '';
             
-            let currentStudentName = savedAccounts[currentStudentIndex].name;
+            let currentStudentName = savedAccounts.length > 0 ? savedAccounts[currentStudentIndex].name : "";
             let displayName = isAdmin ? "أ/ جلال الإتربي (المعلم)" : currentStudentName;
 
             communityMessages.forEach(msg => {
@@ -994,4 +994,4 @@
         renderSavedAccounts();
     </script>
 </body>
-</html>
+</html> 
