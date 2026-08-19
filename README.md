@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPS Platform Pro | النظام الإداري التعليمي المتكامل</title>
+    <title>MPS Platform Pro | النظام الإداري التعليمي الشامل</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -409,7 +409,7 @@
         <div id="screen-welcome" class="screen welcome-screen active">
             <div class="welcome-logo"><i class="fa-solid fa-graduation-cap"></i></div>
             <h1 style="font-size: 20px; font-weight: 900; margin-bottom: 2px;">MPS Platform Pro</h1>
-            <p style="font-size: 11px; color: #94a3b8; margin-bottom: 12px;">نظام الإدارة التعليمية والسناتر الذكية</p>
+            <p style="font-size: 11px; color: #94a3b8; margin-bottom: 12px;">ابتدائي، إعدادي، وثانوي - النظام الذكي</p>
 
             <div style="width: 100%; text-align: right; font-size: 11px; font-weight: bold; margin-bottom: 4px;">اختر حساب الطالب:</div>
             <div class="accounts-list" id="savedAccountsContainer"></div>
@@ -423,7 +423,7 @@
         <!-- 2. شاشة تسجيل طالب جديد -->
         <div id="screen-register" class="screen register-screen">
             <h2 style="font-size: 18px; font-weight: 900; text-align: center; margin-bottom: 2px;">إضافة طالب للسنتر</h2>
-            <p style="font-size: 10px; color: #cbd5e1; text-align: center; margin-bottom: 12px;">منصة MPS التعليمية المتكاملة</p>
+            <p style="font-size: 10px; color: #cbd5e1; text-align: center; margin-bottom: 12px;">جميع المراحل التعليمية</p>
 
             <div class="form-group">
                 <label>اسم الطالب الكامل</label>
@@ -443,7 +443,16 @@
             <div class="form-group">
                 <label>الصف الدراسي</label>
                 <select id="regGrade">
-                    <option value="الصف الاول الثانوي">الصف الاول الثانوي</option>
+                    <!-- المرحلة الابتدائية -->
+                    <option value="الصف الرابع الابتدائي">الصف الرابع الابتدائي</option>
+                    <option value="الصف الخامس الابتدائي">الصف الخامس الابتدائي</option>
+                    <option value="الصف السادس الابتدائي">الصف السادس الابتدائي</option>
+                    <!-- المرحلة الإعدادية -->
+                    <option value="الصف الأول الإعدادي">الصف الأول الإعدادي</option>
+                    <option value="الصف الثاني الإعدادي">الصف الثاني الإعدادي</option>
+                    <option value="الصف الثالث الإعدادي">الصف الثالث الإعدادي</option>
+                    <!-- المرحلة الثانوية -->
+                    <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
                     <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
                     <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
                 </select>
@@ -470,7 +479,7 @@
                     <button class="nav-btn active" onclick="switchSection('profile')">الملف</button>
                     <button class="nav-btn" onclick="switchSection('stats')">المتابعة</button>
                     <button class="nav-btn" id="adminBadgeBtn" style="background: #fef08a; color: #854d0e; display: none;"><i class="fa-solid fa-shield"></i> أدمن</button>
-                    <button class="nav-btn" onclick="sendWhatsAppReport()" style="background: #dcfce7; color: #166534;" title="إرسال تقرير واتساب"><i class="fa-brands fa-whatsapp"></i></button>
+                    <button class="nav-btn" onclick="sendWhatsAppReport()" style="background: #dcfce7; color: #166534;" title="تقرير واتساب"><i class="fa-brands fa-whatsapp"></i></button>
                     <button class="nav-btn" onclick="showScreen('screen-welcome')" style="color: var(--accent-red);"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                 </div>
             </div>
@@ -507,7 +516,7 @@
 
                     <div class="info-card-item" onclick="editFieldPrompt('grade', 'الصف الدراسي الجديد:')" style="cursor:pointer;" title="انقر للتعديل (أدمن)">
                         <div class="label-side"><i class="fa-solid fa-users-rectangle"></i><span>الصف الدراسي</span></div>
-                        <div class="value-side" id="uiGrade">الصف الاول الثانوي</div>
+                        <div class="value-side" id="uiGrade">الصف الأول الثانوي</div>
                     </div>
 
                     <div class="info-card-item" onclick="editFieldPrompt('group', 'المجموعة الجديدة:')" style="cursor:pointer;" title="انقر للتعديل (أدمن)">
@@ -515,7 +524,6 @@
                         <div class="value-side" id="uiGroup">مجموعة السبت والثلاثاء</div>
                     </div>
 
-                    <!-- زر مسح الحساب للأدمن -->
                     <div id="adminDeleteAccountBox" style="margin-top: 10px; display: none;">
                         <button class="btn-main" style="background: var(--accent-red); font-size: 11px; padding: 6px;" onclick="deleteCurrentStudentAccount()"><i class="fa-solid fa-trash"></i> حذف هذا الحساب نهائياً من المنصة</button>
                     </div>
@@ -563,24 +571,22 @@
                         </div>
                     </div>
 
-                    <!-- جدول مواعيد الحصص والشرح القادم (قابل للتعديل بواسطة الأدمن) -->
                     <div class="extra-section">
                         <h5>
                             <span><i class="fa-solid fa-calendar-week"></i> جدول الحصص والشرح الأسبوعي</span>
-                            <i class="fa-solid fa-pen-to-square" id="editScheduleBtn" style="cursor:pointer; display:none; color:var(--secondary-blue);" onclick="editScheduleData()" title="تعديل الجدول (أدمن)"></i>
+                            <i class="fa-solid fa-pen-to-square" id="editScheduleBtn" style="cursor:pointer; display:none; color:var(--secondary-blue);" onclick="editScheduleData()" title="تعديل الجدول"></i>
                         </h5>
-                        <div class="schedule-row"><span>الحصة القادمة:</span> <span id="uiNextClass" style="font-weight: bold; color: var(--primary-blue);">السبت - الباب الأول</span></div>
+                        <div class="schedule-row"><span>الحصة القادمة:</span> <span id="uiNextClass" style="font-weight: bold; color: var(--primary-blue);">السبت - الحصة الأساسية</span></div>
                         <div class="schedule-row"><span>المحاضرة السابقة:</span> <span id="uiPrevClass" style="color: var(--text-muted);">تم شرح التأسيس</span></div>
                     </div>
 
-                    <!-- تنبيه الامتحان القادم (يستطيع المستر تغليفه وتغيير يومه لأي يوم بالأسبوع) -->
                     <div class="extra-section">
                         <h5>
                             <span><i class="fa-solid fa-circle-exclamation"></i> موعد الامتحان القادم</span>
-                            <i class="fa-solid fa-pen-to-square" id="editExamDayBtn" style="cursor:pointer; display:none; color:var(--secondary-blue);" onclick="changeExamDay()" title="تغيير يوم الامتحان (أدمن)"></i>
+                            <i class="fa-solid fa-pen-to-square" id="editExamDayBtn" style="cursor:pointer; display:none; color:var(--secondary-blue);" onclick="changeExamDay()" title="تغيير يوم الامتحان"></i>
                         </h5>
                         <div class="schedule-row"><span>اليوم والموعد:</span> <span id="uiNextExamDay" style="color: var(--accent-red); font-weight: bold;">الخميس القادم (الساعة 2 ظهراً)</span></div>
-                        <div class="schedule-row"><span>حالة النظام:</span> <span style="color: var(--accent-green);">مؤمن وصلاحيات كاملة للأدمن</span></div>
+                        <div class="schedule-row"><span>حالة النظام:</span> <span style="color: var(--accent-green);">ابتدائي، إعدادي، وثانوي مفعل</span></div>
                     </div>
                 </div>
 
@@ -619,7 +625,7 @@
                 name: "محمد عنتر", 
                 teacher: "جلال الاتربي", 
                 phone: "201000000000", 
-                grade: "الصف الاول الثانوي", 
+                grade: "الصف الأول الثانوي", 
                 group: "مجموعة السبت والثلاثاء", 
                 attendance: "لم يُسجل", 
                 absence: "منتظم (لا غياب)", 
@@ -627,7 +633,7 @@
                 homework: "لم يتم التسليم", 
                 behavior: "مشارك بإيجابية وهادئ",
                 score: "لم تُسجل بعد",
-                nextClass: "السبت - الباب الأول",
+                nextClass: "السبت - الحصة الأساسية",
                 prevClass: "تم شرح التأسيس",
                 examDay: "الخميس القادم (الساعة 2 ظهراً)"
             }
@@ -666,7 +672,7 @@
         }
 
         function showAdminLogin() {
-            let pass = prompt("أدخل كود الأدمن السري للمستر (2026):");
+            let pass = prompt("أدخل كود الأدمن السري للمستر :");
             if(pass === "2026") {
                 isAdmin = true;
                 alert("تم تفعيل صلاحيات الأدمن (المستر) بنجاح!");
@@ -705,8 +711,8 @@
                 homework: "لم يتم التسليم",
                 behavior: "ممتاز",
                 score: "لم تُسجل بعد",
-                nextClass: "السبت - الباب الأول",
-                prevClass: "تم شرح الحصة التمهيدية",
+                nextClass: "السبت - الشرح الأساسي",
+                prevClass: "تم الشرح",
                 examDay: "الخميس القادم"
             };
 
@@ -733,8 +739,8 @@
             document.getElementById('behStatus').innerText = acc.behavior;
             document.getElementById('scoreStatus').innerText = acc.score;
 
-            document.getElementById('uiNextClass').innerText = acc.nextClass || "السبت - الباب الأول";
-            document.getElementById('uiPrevClass').innerText = acc.prevClass || "تم الشرح";
+            document.getElementById('uiNextClass').innerText = acc.nextClass || "الحصة القادمة";
+            document.getElementById('uiPrevClass').innerText = acc.prevClass || "المحاضرة السابقة";
             document.getElementById('uiNextExamDay').innerText = acc.examDay || "الخميس القادم";
 
             if(isAdmin) {
@@ -769,9 +775,8 @@
             }
         }
 
-        /* تعديل البيانات الافتراضية بمعرفة الأدمن */
         function editFieldPrompt(field, promptText) {
-            if(!isAdmin) return; // فقط الأدمن يمكنه التعديل
+            if(!isAdmin) return;
             let student = savedAccounts[currentStudentIndex];
             let currentValue = student[field];
             let newVal = prompt(promptText, currentValue);
@@ -783,20 +788,18 @@
             }
         }
 
-        /* خاصية تغيير موعد الامتحان القادم (لأي يوم بالأسبوع) */
         function changeExamDay() {
             if(!isAdmin) return;
             let student = savedAccounts[currentStudentIndex];
-            let newDay = prompt("حدد موعد الامتحان الجديد (مثال: السبت القادم - الأحد - الثلاثاء...):", student.examDay);
+            let newDay = prompt("حدد موعد الامتحان الجديد:", student.examDay);
             if(newDay) {
                 student.examDay = newDay;
                 document.getElementById('uiNextExamDay').innerText = newDay;
                 localStorage.setItem('mps_pro_students', JSON.stringify(savedAccounts));
-                alert("تم تحديث موعد الامتحان بنجاح ليكون: " + newDay);
+                alert("تم تحديث موعد الامتحان بنجاح!");
             }
         }
 
-        /* خاصية تعديل جداول الشرح */
         function editScheduleData() {
             if(!isAdmin) return;
             let student = savedAccounts[currentStudentIndex];
@@ -810,10 +813,9 @@
             alert("تم تحديث جدول الشرح بنجاح!");
         }
 
-        /* خاصية مسح حساب الطالب نهائياً */
         function deleteCurrentStudentAccount() {
             if(!isAdmin) return;
-            let confirmDel = confirm("هل أنت متأكد من رغبتك في حذف هذا الحساب نهائياً من المنصة؟");
+            let confirmDel = confirm("هل أنت متأكد من رغبتك في حذف هذا الحساب نهائياً؟");
             if(confirmDel) {
                 savedAccounts.splice(currentStudentIndex, 1);
                 localStorage.setItem('mps_pro_students', JSON.stringify(savedAccounts));
@@ -834,7 +836,7 @@
                 if(isAdmin) {
                     adminActions = `
                         <button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="updateData('attendance', 'حاضر في الموعد')">تسجيل حضور (حاضر)</button>
-                        <button class="btn-main" style="padding: 5px; font-size: 10px; background: var(--accent-red); margin-top: 4px;" onclick="updateData('attendance', 'متأخر 15 دقيقة')">تسجيل تأخير</button>
+                        <button class="btn-main" style="padding: 5px; font-size: 10px; background: var(--accent-red); margin-top: 4px;" onclick="updateData('attendance', 'متأخر')">تسجيل تأخير</button>
                     `;
                 }
             } else if(type === 'absence') {
@@ -844,8 +846,8 @@
                     adminActions = `<button class="btn-main" style="padding: 5px; font-size: 10px; background: var(--accent-red);" onclick="updateData('absence', 'غياب بدون عذر (إنذار)')">تسجيل غياب عاجل</button>`;
                 }
             } else if(type === 'exams') {
-                title = "الدرجات والتقييم الشهري واليومي";
-                body = `الدرجة الحالية: <strong>${student.score}</strong>.<br><span style="font-size:10px; color:var(--text-muted);">اختر من الدرجات أدناه (من 1 إلى 10):</span>`;
+                title = "الدرجات والتقييم (من 10)";
+                body = `الدرجة الحالية: <strong>${student.score}</strong>.<br><span style="font-size:10px; color:var(--text-muted);">اختر من الدرجات أدناه:</span>`;
                 if(isAdmin) {
                     adminActions = `
                         <div style="display:flex; gap:5px; margin-bottom:5px; flex-wrap:wrap; justify-content:center;">
@@ -853,9 +855,9 @@
                             <button onclick="updateData('score', '9 / 10')" style="background:#3b82f6; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:10px; cursor:pointer;">9</button>
                             <button onclick="updateData('score', '8 / 10')" style="background:#3b82f6; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:10px; cursor:pointer;">8</button>
                             <button onclick="updateData('score', '7 / 10')" style="background:#3b82f6; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:10px; cursor:pointer;">7</button>
-                            <button onclick="updateData('score', 'أقل من 6 / 10')" style="background:#ef4444; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:10px; cursor:pointer;">راسب / ضعيف</button>
+                            <button onclick="updateData('score', 'أقل من 6')" style="background:#ef4444; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:10px; cursor:pointer;">ضعيف</button>
                         </div>
-                        <button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="customScoreInput()">إدخال درجة مخصصة يدوياً</button>
+                        <button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="customScoreInput()">إدخال درجة مخصصة</button>
                     `;
                 }
             } else if(type === 'homework') {
@@ -864,14 +866,14 @@
                 if(isAdmin) {
                     adminActions = `
                         <button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="updateData('homework', 'تم تسليم الواجب كاملاً')">تحديد (تم التسليم)</button>
-                        <button class="btn-main" style="padding: 5px; font-size: 10px; background: var(--accent-red); margin-top: 4px;" onclick="updateData('homework', 'لم يُسلم الواجب (تحت الأداء)')">تحديد (لم يُسلم)</button>
+                        <button class="btn-main" style="padding: 5px; font-size: 10px; background: var(--accent-red); margin-top: 4px;" onclick="updateData('homework', 'لم يُسلم الواجب')">تحديد (لم يُسلم)</button>
                     `;
                 }
             } else if(type === 'payments') {
                 title = "إيصال السداد والرسوم الشهرية";
                 body = `الحالة المالية: <strong style="color:var(--secondary-blue);">${student.payment}</strong>`;
                 if(isAdmin) {
-                    adminActions = `<button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="updateData('payment', 'تم دفع اشتراك الشهر (إيصال معتمد)')">إصدار إيصال (تم السداد)</button>`;
+                    adminActions = `<button class="btn-main" style="padding: 5px; font-size: 10px;" onclick="updateData('payment', 'تم دفع اشتراك الشهر (معتمد)')">إصدار إيصال (تم السداد)</button>`;
                 }
             } else if(type === 'behavior') {
                 title = "السلوك والمشاركة الصفية";
@@ -926,19 +928,19 @@
             }
 
             localStorage.setItem('mps_pro_students', JSON.stringify(savedAccounts));
-            alert("تم التحديث وحفظ البيانات بنجاح بواسطة المستر!");
+            alert("تم التحديث وحفظ البيانات بنجاح!");
             closeModalDirect();
         }
 
         function customScoreInput() {
-            let customVal = prompt("أدخل الدرجة يدوياً (مثال: 9.5 / 10 أو تقدير):");
+            let customVal = prompt("أدخل الدرجة يدوياً (مثال: 9.5 / 10):");
             if(customVal) {
                 updateData('score', customVal + " / 10");
             }
         }
 
         function updateBehaviorNote() {
-            let student = savedAccounts[currentStudentIndex];
+            let student = savedAccounts[currentScene = currentStudentIndex];
             let note = prompt("أدخل الملاحظة السلوكية الجديدة:", student.behavior);
             if(note) {
                 student.behavior = note;
@@ -960,15 +962,15 @@
                              `-----------------------------------%0A` +
                              `✅ الحضور: ${student.attendance}%0A` +
                              `⚠️ الغياب: ${student.absence}%0A` +
-                             `⭐ الدرجة والتقييم: ${student.score}%0A` +
-                             `📖 الواجب المنزلي: ${student.homework}%0A` +
+                             `⭐ الدرجة: ${student.score}%0A` +
+                             `📖 الواجب: ${student.homework}%0A` +
                              `💳 الاشتراك: ${student.payment}%0A` +
-                             `💬 تقييم السلوك: ${student.behavior}%0A` +
-                             `📅 الامتحان القادم: ${student.examDay}%0A` +
+                             `💬 السلوك: ${student.behavior}%0A` +
+                             `📅 الامتحان: ${student.examDay}%0A` +
                              `-----------------------------------%0A` +
-                             `مع تحيات إدارة السنتر والمستر / ${student.teacher}`;
+                             `مع تحيات إدارة السنتر / ${student.teacher}`;
             
-            window.open(`https://wa.me/${phone}?text=${reportText}`, '_blank');
+            window.open(`https://wa.me/${phone}?text=${reportTest = reportText}`, '_blank');
         }
 
         renderSavedAccounts();
