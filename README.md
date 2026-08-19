@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mozakra Pro | المنصة التعليمية المتعددة</title>
+    <title>Mozakra Pro | المنصة التعليمية المتكاملة - أولى ثانوي</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -82,7 +82,7 @@
         .accounts-list {
             width: 100%;
             margin: 10px 0;
-            max-height: 280px;
+            max-height: 260px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -454,47 +454,43 @@
             <div class="accounts-list" id="savedAccountsContainer"></div>
 
             <div style="width: 100%; margin-top: auto; padding-bottom: 10px;">
-                <button class="btn-main" onclick="showScreen('screen-register')"><i class="fa-solid fa-user-plus"></i> تسجل طالب جديد</button>
+                <button class="btn-main" onclick="showScreen('screen-register')"><i class="fa-solid fa-user-plus"></i> تسجل طالب جديد (أولى ثانوي)</button>
                 <button class="btn-main" style="background: #0f172a;" onclick="showTeacherLoginModal()"><i class="fa-solid fa-chalkboard-user"></i> دخول المعلم (لوحة التحكم)</button>
             </div>
         </div>
 
-        <!-- 2. شاشة تسجيل طالب جديد (بالخطوات المتسلسلة) -->
+        <!-- 2. شاشة تسجيل طالب جديد (البيانات الحقيقية للمدرسين والمجموعات) -->
         <div id="screen-register" class="screen register-screen">
-            <h2 style="font-size: 15px; font-weight: 900; text-align: center; margin-bottom: 2px;">تسجيل طالب بالسنتر</h2>
-            <p style="font-size: 9px; color: #cbd5e1; text-align: center; margin-bottom: 8px;">اختر المادة، الصف، والمجموعة بدقة</p>
+            <h2 style="font-size: 14px; font-weight: 900; text-align: center; margin-bottom: 2px;">تسجيل طالب (أولى ثانوي)</h2>
+            <p style="font-size: 9px; color: #cbd5e1; text-align: center; margin-bottom: 8px;">اختر المدرس ثم المجموعة المحددة بدقة</p>
 
             <div class="form-group">
                 <label>اختر المعلم والمادة</label>
-                <select id="regTeacherSelect">
-                    <option value="أ/ أحمد (رياضيات)">أ/ أحمد (رياضيات)</option>
-                    <option value="أ/ محمد (تاريخ)">أ/ محمد (تاريخ)</option>
-                    <option value="أ/ محمود (لغة عربية)">أ/ محمود (لغة عربية)</option>
-                    <option value="أ/ إبراهيم (فيزياء)">أ/ إبراهيم (فيزياء)</option>
+                <select id="regTeacherSelect" onchange="updateGroupsDropdown()">
+                    <option value="مستر سلمان زاكي (رياضيات)">مستر سلمان زاكي (رياضيات)</option>
+                    <option value="مستر أحمد عبدالمطلب (لغة عربية)">مستر أحمد عبدالمطلب (لغة عربية)</option>
+                    <option value="مستر نجيب رسلان (لغة إنجليزية)">مستر نجيب رسلان (لغة إنجليزية)</option>
+                    <option value="مستر جلال الأتربي (دراسات اجتماعية)">مستر جلال الأتربي (دراسات اجتماعية)</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>الصف الدراسي</label>
-                <select id="regGrade" onchange="updateGroupsList()">
+                <select id="regGrade" disabled>
                     <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
-                    <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
-                    <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>اختر المجموعة</label>
+                <label>اختر مجموعة المادة</label>
                 <select id="regGroup">
-                    <option value="مجموعة السبت والأربعاء (2 ظهراً)">مجموعة السبت والأربعاء (2 ظهراً)</option>
-                    <option value="مجموعة الأحد والثلاثاء (4 عصراً)">مجموعة الأحد والثلاثاء (4 عصراً)</option>
-                    <option value="مجموعة الخميس (10 صباحاً)">مجموعة الخميس (10 صباحاً)</option>
+                    <!-- سيتم تعبئتها تلقائياً بناءً على المدرس المختصر -->
                 </select>
             </div>
 
             <div class="form-group">
                 <label>اسم الطالب الكامل</label>
-                <input type="text" id="regStudentName" placeholder="مثال: يوسف محمد">
+                <input type="text" id="regStudentName" placeholder="مثال: يوسف محمد عنتر">
             </div>
 
             <div class="form-group">
@@ -506,7 +502,7 @@
             <button class="btn-main btn-secondary" onclick="showScreen('screen-welcome')">رجوع</button>
         </div>
 
-        <!-- 3. لوحة تحكم الطالب / المعلم (الداشبورد) -->
+        <!-- 3. لوحة تحكم الطالب / المعلم -->
         <div id="screen-dashboard" class="screen">
             
             <div class="top-navbar">
@@ -540,7 +536,7 @@
                         <div class="qr-box"><i class="fa-solid fa-qrcode"></i></div>
                         <div>
                             <h4 style="font-size: 10px; font-weight: bold; color: var(--primary-blue);">بطاقة حضور السنتر الإلكترونية</h4>
-                            <p style="font-size: 9px; color: var(--text-muted);">المادة والمعلم: <span id="uiTeacher">المعلم</span></p>
+                            <p style="font-size: 9px; color: var(--text-muted);">المعلم: <span id="uiTeacher">المعلم</span></p>
                         </div>
                     </div>
 
@@ -556,7 +552,7 @@
 
                     <div class="info-card-item">
                         <div class="label-side"><i class="fa-solid fa-book-open"></i><span>الصف الدراسي</span></div>
-                        <div class="value-side" id="uiGrade">الصف</div>
+                        <div class="value-side" id="uiGrade">الصف الأول الثانوي</div>
                     </div>
 
                     <div class="info-card-item" onclick="editFieldPrompt('phone', 'رقم ولي الأمر الجديد:')" style="cursor:pointer;" title="تعديل">
@@ -618,7 +614,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <h4 style="font-size: 11px; font-weight: 900; color: var(--primary-blue);"><i class="fa-solid fa-comments"></i> مجتمع مادة: <span id="chatTeacherTitle">المعلم</span></h4>
                         </div>
-                        <p style="font-size: 9px; color: var(--text-muted);">هنا يتم مناقشة أسئلة الواجب والدرس مع معلم المادة وزملاء المجموعة.</p>
+                        <p style="font-size: 9px; color: var(--text-muted);">مجتمع خاص بطلاب هذه المادة فقط لعدم التشتت مع باقي المواد.</p>
 
                         <div class="chat-box" id="communityChatBox"></div>
 
@@ -658,15 +654,15 @@
     <div class="modal-overlay" id="teacherLoginModal" onclick="closeTeacherModal(event)">
         <div class="modal-card" onclick="event.stopPropagation()" style="text-align: right;">
             <h3 style="font-size: 12px; font-weight: 900; color: var(--primary-blue); margin-bottom: 6px;"><i class="fa-solid fa-chalkboard-user"></i> دخول لوحة تحكم المعلم</h3>
-            <p style="font-size: 9px; color: var(--text-muted); margin-bottom: 10px;">كل معلم ليه باسورد خاص بيه لإدارة طلابه ومادته فقط.</p>
+            <p style="font-size: 9px; color: var(--text-muted); margin-bottom: 10px;">كل معلم يدخل بكلمة سرية ولا يرى سوى طلاب مادته فقط.</p>
             
             <div class="form-group" style="text-align: right;">
                 <label style="color: var(--text-main);">اختر اسم المعلم</label>
                 <select id="loginTeacherName" style="background: white; color: var(--text-main); border: 1px solid #cbd5e1;">
-                    <option value="أ/ أحمد (رياضيات)">أ/ أحمد (رياضيات)</option>
-                    <option value="أ/ محمد (تاريخ)">أ/ محمد (تاريخ)</option>
-                    <option value="أ/ محمود (لغة عربية)">أ/ محمود (لغة عربية)</option>
-                    <option value="أ/ إبراهيم (فيزياء)">أ/ إبراهيم (فيزياء)</option>
+                    <option value="مستر سلمان زاكي (رياضيات)">مستر سلمان زاكي (رياضيات)</option>
+                    <option value="مستر أحمد عبدالمطلب (لغة عربية)">مستر أحمد عبدالمطلب (لغة عربية)</option>
+                    <option value="مستر نجيب رسلان (لغة إنجليزية)">مستر نجيب رسلان (لغة إنجليزية)</option>
+                    <option value="مستر جلال الأتربي (دراسات اجتماعية)">مستر جلال الأتربي (دراسات اجتماعية)</option>
                 </select>
             </div>
 
@@ -680,19 +676,55 @@
     </div>
 
     <script>
+        // تعريف مجموعات المدرسين بدقة حسب بياناتك
+        const teacherGroupsData = {
+            "مستر سلمان زاكي (رياضيات)": [
+                "مجموعة السبت والثلاثاء (الساعة 5 مساءً)",
+                "مجموعة الاثنين والخميس (الساعة 6 مساءً)"
+            ],
+            "مستر أحمد عبدالمطلب (لغة عربية)": [
+                "مجموعة السبت والثلاثاء (الساعة 5 مساءً)"
+            ],
+            "مستر نجيب رسلان (لغة إنجليزية)": [
+                "مجموعة السبت والثلاثاء (الساعة 4 عصراً)"
+            ],
+            "مستر جلال الأتربي (دراسات اجتماعية)": [
+                "مجموعة السبت والثلاثاء (الساعة 3 عصراً)",
+                "مجموعة السبت والثلاثاء (الساعة 4 عصراً)",
+                "مجموعة السبت والثلاثاء (الساعة 5 مساءً)"
+            ]
+        };
+
         let isTeacherMode = false;
         let loggedInTeacher = "";
         let currentStudentIndex = 0;
 
-        let savedAccounts = JSON.parse(localStorage.getItem('mozakra_pro_students_v2')) || [];
-        let communityMessages = JSON.parse(localStorage.getItem('mozakra_pro_chat_v2')) || [];
+        let savedAccounts = JSON.parse(localStorage.getItem('mozakra_pro_students_v3')) || [];
+        let communityMessages = JSON.parse(localStorage.getItem('mozakra_pro_chat_v3')) || [];
+
+        function updateGroupsDropdown() {
+            let teacherSelect = document.getElementById('regTeacherSelect').value;
+            let groupSelect = document.getElementById('regGroup');
+            groupSelect.innerHTML = '';
+
+            let groups = teacherGroupsData[teacherSelect] || [];
+            groups.forEach(g => {
+                groupSelect.innerHTML += `<option value="${g}">${g}</option>`;
+            });
+        }
+
+        // تشغيل التعبئة أول ما الصفحة تفتح
+        window.onload = function() {
+            updateGroupsDropdown();
+            renderSavedAccounts();
+        };
 
         function renderSavedAccounts() {
             const container = document.getElementById('savedAccountsContainer');
             container.innerHTML = '';
             
             if(savedAccounts.length === 0) {
-                container.innerHTML = '<p style="font-size: 10px; color: var(--text-muted); text-align: center; margin-top: 15px;">لا توجد حسابات طلاب مسجلة.<br>قم بتسجيل حساب جديد.</p>';
+                container.innerHTML = '<p style="font-size: 10px; color: var(--text-muted); text-align: center; margin-top: 15px;">لا توجد حسابات طلاب مسجلة.<br>قم بتسجيل طالب جديد بالسنتر.</p>';
                 return;
             }
 
@@ -734,32 +766,29 @@
             let tName = document.getElementById('loginTeacherName').value;
             let tPass = document.getElementById('loginTeacherPass').value;
 
-            // كود سري موحد لكل المدرسين للتجربة (2026) أو تقدر تخصصه لكل مدرس
             if(tPass === "2026") {
                 isTeacherMode = true;
                 loggedInTeacher = tName;
                 closeTeacherModal();
 
-                // فلترة الطلاب التابعين للمدرس ده بس
                 let teacherStudents = savedAccounts.filter(acc => acc.teacher === tName);
                 if(teacherStudents.length === 0) {
                     alert(`أهلاً بك يا ${tName}. لا توجد طلاب مسجلة في مادتك حالياً.`);
                     return;
                 }
                 
-                // ادخل أول طالب يخص المدرس ده كبداية لعرض لوحة تحكمه
                 let firstIndex = savedAccounts.findIndex(acc => acc.teacher === tName);
                 loginStudent(firstIndex);
-                alert(`مرحباً بك يا ${tName} في لوحة تحكم معلم المادة الخاصة بك.`);
+                alert(`مرحباً بك يا ${tName} في لوحة تحكم المعلم الخاصة بك.`);
             } else {
-                alert("كود المعلم السري غير صحيح!");
+                alert("كود المعلم السري غير صحيح! (جرب 2026)");
             }
         }
 
         function deleteAccount(index) {
             if(confirm("هل أنت متأكد من حذف هذا الحساب؟")) {
                 savedAccounts.splice(index, 1);
-                localStorage.setItem('mozakra_pro_students_v2', JSON.stringify(savedAccounts));
+                localStorage.setItem('mozakra_pro_students_v3', JSON.stringify(savedAccounts));
                 renderSavedAccounts();
             }
         }
@@ -792,7 +821,7 @@
             };
 
             savedAccounts.push(newAcc);
-            localStorage.setItem('mozakra_pro_students_v2', JSON.stringify(savedAccounts));
+            localStorage.setItem('mozakra_pro_students_v3', JSON.stringify(savedAccounts));
             loginStudent(savedAccounts.length - 1);
         }
 
@@ -800,9 +829,8 @@
             currentStudentIndex = index;
             let acc = savedAccounts[index];
 
-            // لو في وضع المدرس، تأكد إنه مبيفتحش غير طلاب مادته فقط
             if(isTeacherMode && acc.teacher !== loggedInTeacher) {
-                alert("عذراً، هذا الطالب يتبع معلم آخر ولا يظهر في لوحة تحكمك.");
+                alert("عذراً، هذا الطالب يتبع معلماً آخر ولا يظهر في لوحة تحكمك.");
                 return;
             }
 
@@ -812,7 +840,6 @@
             document.getElementById('uiTeacherName').innerText = acc.teacher;
             document.getElementById('uiGroup').innerText = acc.group;
             document.getElementById('uiGroupBadge').innerText = acc.group;
-            document.getElementById('uiGrade').innerText = acc.grade;
             document.getElementById('uiPhone').innerText = acc.phone;
             document.getElementById('chatTeacherTitle').innerText = acc.teacher;
 
@@ -857,10 +884,10 @@
             chatBox.innerHTML = '';
             
             let acc = savedAccounts[currentStudentIndex];
-            let roomKey = acc.teacher; // مجتمع خاص بكل مدرس لوحده
+            let roomKey = acc.teacher;
 
             let currentMessages = communityMessages[roomKey] || [
-                { sender: "إدارة المادة", text: `أهلاً بك في مجتمع مادة ${acc.teacher}. اسأل هنا عن الواجب.`, time: "اليوم" }
+                { sender: "إدارة المادة", text: `أهلاً بك في مجتمع مادة ${acc.teacher} الخاصة بأولى ثانوي.`, time: "اليوم" }
             ];
 
             let senderName = isTeacherMode ? acc.teacher : acc.name;
@@ -896,7 +923,7 @@
                 time: "الآن"
             });
 
-            localStorage.setItem('mozakra_pro_chat_v2', JSON.stringify(communityMessages));
+            localStorage.setItem('mozakra_pro_chat_v3', JSON.stringify(communityMessages));
             input.value = '';
             renderCommunityChat();
         }
@@ -911,7 +938,7 @@
             let newVal = prompt(promptText, student[field]);
             if(newVal !== null && newVal.trim() !== "") {
                 student[field] = newVal.trim();
-                localStorage.setItem('mozakra_pro_students_v2', JSON.stringify(savedAccounts));
+                localStorage.setItem('mozakra_pro_students_v3', JSON.stringify(savedAccounts));
                 loginStudent(currentStudentIndex);
                 alert("تم التحديث بنجاح!");
             }
@@ -919,9 +946,9 @@
 
         function deleteCurrentStudentAccount() {
             if(!isTeacherMode) return;
-            if(confirm("هل أنت متأكد من حذف هذا الطالب من قاعدة بياناتك؟")) {
+            if(confirm("هل أنت متأكد من حذف هذا الطالب من قاعدة بياناتك الخاصة؟")) {
                 savedAccounts.splice(currentStudentIndex, 1);
-                localStorage.setItem('mozakra_pro_students_v2', JSON.stringify(savedAccounts));
+                localStorage.setItem('mozakra_pro_students_v3', JSON.stringify(savedAccounts));
                 alert("تم الحذف.");
                 showScreen('screen-welcome');
             }
@@ -1014,7 +1041,7 @@
             if(field === 'homework') document.getElementById('hwStatus').innerText = val;
             if(field === 'score') document.getElementById('scoreStatus').innerText = val;
 
-            localStorage.setItem('mozakra_pro_students_v2', JSON.stringify(savedAccounts));
+            localStorage.setItem('mozakra_pro_students_v3', JSON.stringify(savedAccounts));
             alert("تم التحديث بنجاح!");
             closeModalDirect();
         }
@@ -1022,10 +1049,10 @@
         function sendWhatsAppReport() {
             let student = savedAccounts[currentStudentIndex];
             let phone = student.phone !== "غير متوفر" ? student.phone : "";
-            let reportText = `📌 *تقرير منصة Mozakra Pro التعليمية*%0A` +
+            let reportText = `📌 *تقرير منصة Mozakra Pro (أولى ثانوي)*%0A` +
                              `👨‍🏫 المعلم والمادة: *${student.teacher}*%0A` +
                              `👤 الطالب: *${student.name}*%0A` +
-                             `📚 الصف: ${student.grade} | الموعد: ${student.group}%0A` +
+                             `📚 الصف: الأولى الثانوية | المجموعة: ${student.group}%0A` +
                              `------------------%0A` +
                              `✅ الحضور: ${student.attendance}%0A` +
                              `⚠️ الغياب: ${student.absence}%0A` +
@@ -1036,10 +1063,8 @@
                              `------------------%0A` +
                              `إدارة المنصة التعليمية`;
             
-            window.open(`https://wa.me/${phone}?text=${reportText}`, '_blank');
+            window.open(`https://wa.me/${phone}?text=${reportData}`, '_blank');
         }
-
-        renderSavedAccounts();
     </script>
 </body>
 </html> 
