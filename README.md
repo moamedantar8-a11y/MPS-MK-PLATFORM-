@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPS Platform Pro | أ/ جلال الإتربي</title>
+    <title>Mozakra Pro | منصة السنتر التعليمية</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -74,7 +74,7 @@
         }
 
         .welcome-logo {
-            font-size: 55px;
+            font-size: 50px;
             color: var(--secondary-blue);
             margin-bottom: 5px;
             margin-top: 15px;
@@ -83,7 +83,7 @@
         .accounts-list {
             width: 100%;
             margin: 10px 0;
-            max-height: 320px;
+            max-height: 310px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -480,7 +480,7 @@
         <!-- 1. شاشة الترحيب واختيار الحسابات -->
         <div id="screen-welcome" class="screen welcome-screen active">
             <div class="welcome-logo"><i class="fa-solid fa-graduation-cap"></i></div>
-            <h2 style="font-size: 18px; font-weight: 900; margin-bottom: 2px;">MPS Academy</h2>
+            <h2 style="font-size: 18px; font-weight: 900; margin-bottom: 2px;">Mozakra Pro</h2>
             <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">اختر حسابًا لمتابعة تطبيقك</p>
 
             <div class="accounts-list" id="savedAccountsContainer"></div>
@@ -494,7 +494,12 @@
         <!-- 2. شاشة تسجيل طالب جديد -->
         <div id="screen-register" class="screen register-screen">
             <h2 style="font-size: 16px; font-weight: 900; text-align: center; margin-bottom: 2px;">إضافة طالب جديد للسنتر</h2>
-            <p style="font-size: 9px; color: #cbd5e1; text-align: center; margin-bottom: 10px;">أ/ جلال الإتربي (استاذ التاريخ والجغرافيا)</p>
+            <p style="font-size: 9px; color: #cbd5e1; text-align: center; margin-bottom: 10px;">منصة إدارة المجموعات والطلاب</p>
+
+            <div class="form-group">
+                <label>اسم المعلم / المادة</label>
+                <input type="text" id="regTeacherName" placeholder="مثال: أ/ تاريخ أو أ/ لغة عربية">
+            </div>
 
             <div class="form-group">
                 <label>اسم الطالب الكامل</label>
@@ -509,13 +514,12 @@
             <div class="form-group">
                 <label>الصف الدراسي والمجموعة</label>
                 <select id="regGrade">
-                    <option value="الصف الأول الإعدادي">الصف الأول الإعدادي (الإثنين والخميس)</option>
-                    <option value="الصف الثاني الإعدادي">الصف الثاني الإعدادي (الأحد والأربعاء)</option>
-                    <option value="الصف الثالث الإعدادي">الصف الثالث الإعدادي (السبت والثلاثاء)</option>
-                    <option value="الصف الأول الثانوي">الصف الأول الثانوي (السبت والثلاثاء)</option>
-                    <option value="الصف الثاني الثانوي">الصف الثاني الثانوي (الأحد والأربعاء)</option>
-                    <option value="الصف الثالث الثانوي - جغرافيا">الصف الثالث الثانوي - جغرافيا</option>
-                    <option value="الصف الثالث الثانوي - تاريخ">الصف الثالث الثانوي - تاريخ</option>
+                    <option value="الصف الأول الإعدادي">الصف الأول الإعدادي</option>
+                    <option value="الصف الثاني الإعدادي">الصف الثاني الإعدادي</option>
+                    <option value="الصف الثالث الإعدادي">الصف الثالث الإعدادي</option>
+                    <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
+                    <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
+                    <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
                 </select>
             </div>
 
@@ -529,7 +533,7 @@
             <div class="top-navbar">
                 <div class="nav-brand">
                     <i class="fa-solid fa-landmark"></i>
-                    <span>MPS Pro</span>
+                    <span>Mozakra</span>
                 </div>
                 <div class="nav-links">
                     <button class="nav-btn active" onclick="switchSection('profile')">الملف</button>
@@ -557,13 +561,13 @@
                         <div class="qr-box"><i class="fa-solid fa-qrcode"></i></div>
                         <div>
                             <h4 style="font-size: 10px; font-weight: bold; color: var(--primary-blue);">بطاقة حضور السنتر الإلكترونية</h4>
-                            <p style="font-size: 9px; color: var(--text-muted);">أ/ جلال الإتربي (01093785277)</p>
+                            <p style="font-size: 9px; color: var(--text-muted);">معلم المادة: <span id="uiTeacher">المعلم</span></p>
                         </div>
                     </div>
 
                     <div class="info-card-item">
-                        <div class="label-side"><i class="fa-solid fa-user-tie"></i><span>المعلم</span></div>
-                        <div class="value-side">أ/ جلال الإتربي</div>
+                        <div class="label-side"><i class="fa-solid fa-user-tie"></i><span>المعلم والمادة</span></div>
+                        <div class="value-side" id="uiTeacherName">المعلم</div>
                     </div>
 
                     <div class="info-card-item" onclick="editFieldPrompt('phone', 'رقم ولي الأمر الجديد:')" style="cursor:pointer;" title="تعديل">
@@ -624,9 +628,8 @@
                     </div>
 
                     <div class="extra-section">
-                        <h5><span><i class="fa-solid fa-circle-exclamation"></i> تنبيهات حصص أ/ جلال</span></h5>
-                        <div class="schedule-row"><span>رقم التواصل بالسنتر:</span> <span style="color: var(--primary-blue); font-weight: bold;">01093785277</span></div>
-                        <div class="schedule-row"><span>حالة النظام:</span> <span style="color: var(--accent-green);">يعمل بكفاءة عالية</span></div>
+                        <h5><span><i class="fa-solid fa-circle-exclamation"></i> تنبيهات السنتر</span></h5>
+                        <div class="schedule-row"><span>حالة النظام:</span> <span style="color: var(--accent-green);">متعدد المعلمين والطلاب</span></div>
                     </div>
                 </div>
 
@@ -634,7 +637,7 @@
                 <div id="section-community" style="display: none;">
                     <div class="community-container">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
-                            <h4 style="font-size: 11px; font-weight: 900; color: var(--primary-blue);"><i class="fa-solid fa-comments"></i> مجتمع طلاب أ/ جلال</h4>
+                            <h4 style="font-size: 11px; font-weight: 900; color: var(--primary-blue);"><i class="fa-solid fa-comments"></i> مجتمع طلاب السنتر</h4>
                             <span style="font-size: 9px; color: var(--text-muted);">اسأل واستفسر عن الواجب</span>
                         </div>
 
@@ -666,7 +669,7 @@
             <div style="font-size: 10px; color: var(--text-muted); line-height: 1.4; margin-bottom: 8px;" id="modalBodyContent"></div>
             
             <div class="admin-controls" id="adminControlPanel">
-                <p style="font-size: 9px; font-weight: bold; color: var(--primary-blue); margin-bottom: 4px;"><i class="fa-solid fa-lock-open"></i> لوحة تحكم المستر:</p>
+                <p style="font-size: 9px; font-weight: bold; color: var(--primary-blue); margin-bottom: 4px;"><i class="fa-solid fa-lock-open"></i> لوحة تحكم المعلم:</p>
                 <div id="adminActionButtons"></div>
             </div>
         </div>
@@ -676,11 +679,10 @@
         let isAdmin = false;
         let currentStudentIndex = 0;
 
-        // تبدأ المنصة خالية تماماً من الحسابات الوهمية
-        let savedAccounts = JSON.parse(localStorage.getItem('mps_pro_jalal_students')) || [];
+        let savedAccounts = JSON.parse(localStorage.getItem('mozakra_pro_students')) || [];
 
-        let communityMessages = JSON.parse(localStorage.getItem('mps_jalal_chat')) || [
-            { sender: "أ/ جلال الإتربي", text: "أهلاً بجميع طلابي الأعزاء في منصة السنتر الذكية.", time: "اليوم" }
+        let communityMessages = JSON.parse(localStorage.getItem('mozakra_pro_chat')) || [
+            { sender: "النظام", text: "أهلاً بجميع الطلاب في منصة Mozakra Pro.", time: "اليوم" }
         ];
 
         function renderSavedAccounts() {
@@ -696,7 +698,7 @@
                 container.innerHTML += `
                     <div class="account-card-saved" onclick="loginStudent(${index})">
                         <div style="text-align: right; flex: 1;">
-                            <h4 style="font-size: 11px; font-weight: bold; color: var(--text-main);">جلال الاتربي</h4>
+                            <h4 style="font-size: 11px; font-weight: bold; color: var(--text-main);">${acc.teacher}</h4>
                             <span style="font-size: 10px; color: var(--secondary-blue);">00${acc.id}</span>
                             <div style="font-size: 10px; font-weight: bold; color: var(--text-muted);">${acc.name}</div>
                         </div>
@@ -720,15 +722,15 @@
         }
 
         function showAdminLogin() {
-            let pass = prompt("أدخل كود الأدمن السري لأ/ جلال (2026):");
+            let pass = prompt("أدخل كود الأدمن السري للمعلم (2026):");
             if(pass === "2026") {
                 if(savedAccounts.length === 0) {
-                    alert("لا توجد حسابات طلاب مسجلة حالياً ليقوم الأدمن بإدارتها. يجيب تسجيل طالب أولاً.");
+                    alert("لا توجد حسابات طلاب مسجلة حالياً ليقوم الأدمن بإدارتها. يرجى تسجيل طالب أولاً.");
                     showScreen('screen-register');
                     return;
                 }
                 isAdmin = true;
-                alert("تم تفعيل وضع المعلم (أدمن). يرجى اختيار الحساب المطلوب مراجعته من القائمة.");
+                alert("تم تفعيل وضع المعلم (أدمن). اختر الحساب المطلوب إدارته ومراجعته من القائمة.");
                 showScreen('screen-welcome');
             } else if(pass !== null) {
                 alert("الكود غير صحيح!");
@@ -738,23 +740,25 @@
         function deleteAccount(index) {
             if(confirm("هل أنت متأكد من حذف هذا الحساب نهائياً؟")) {
                 savedAccounts.splice(index, 1);
-                localStorage.setItem('mps_pro_jalal_students', JSON.stringify(savedAccounts));
+                localStorage.setItem('mozakra_pro_students', JSON.stringify(savedAccounts));
                 renderSavedAccounts();
             }
         }
 
         function registerNewStudent() {
+            let teacher = document.getElementById('regTeacherName').value.trim();
             let name = document.getElementById('regStudentName').value.trim();
             let phone = document.getElementById('regParentPhone').value.trim();
             let grade = document.getElementById('regGrade').value;
 
-            if(!name) {
-                alert("يرجى إدخال اسم الطالب الكامل!");
+            if(!name || !teacher) {
+                alert("يرجى إدخال اسم المعلم وا اسم الطالب الكامل!");
                 return;
             }
 
             let newAcc = {
                 id: Math.floor(100000 + Math.random() * 900000),
+                teacher: teacher,
                 name: name,
                 phone: phone || "غير متوفر",
                 grade: grade,
@@ -767,7 +771,7 @@
             };
 
             savedAccounts.push(newAcc);
-            localStorage.setItem('mps_pro_jalal_students', JSON.stringify(savedAccounts));
+            localStorage.setItem('mozakra_pro_students', JSON.stringify(savedAccounts));
             loginStudent(savedAccounts.length - 1);
         }
 
@@ -777,6 +781,8 @@
 
             document.getElementById('uiStudentName').innerText = acc.name;
             document.getElementById('uiId').innerText = acc.id;
+            document.getElementById('uiTeacher').innerText = acc.teacher;
+            document.getElementById('uiTeacherName').innerText = acc.teacher;
             document.getElementById('uiPhone').innerText = acc.phone;
             document.getElementById('uiGrade').innerText = acc.grade;
 
@@ -821,7 +827,8 @@
             chatBox.innerHTML = '';
             
             let currentStudentName = savedAccounts.length > 0 ? savedAccounts[currentStudentIndex].name : "";
-            let displayName = isAdmin ? "أ/ جلال الإتربي (المعلم)" : currentStudentName;
+            let teacherName = savedAccounts.length > 0 ? savedAccounts[currentStudentIndex].teacher : "المعلم";
+            let displayName = isAdmin ? `${teacherName} (المعلم)` : currentStudentName;
 
             communityMessages.forEach(msg => {
                 let isMine = (msg.sender === displayName || (!isAdmin && msg.sender === currentStudentName));
@@ -841,7 +848,8 @@
             if(!text) return;
 
             let currentStudentName = savedAccounts[currentStudentIndex].name;
-            let senderName = isAdmin ? "أ/ جلال الإتربي" : currentStudentName;
+            let teacherName = savedAccounts[currentStudentIndex].teacher;
+            let senderName = isAdmin ? teacherName : currentStudentName;
 
             communityMessages.push({
                 sender: senderName,
@@ -849,7 +857,7 @@
                 time: "الآن"
             });
 
-            localStorage.setItem('mps_jalal_chat', JSON.stringify(communityMessages));
+            localStorage.setItem('mozakra_pro_chat', JSON.stringify(communityMessages));
             input.value = '';
             renderCommunityChat();
         }
@@ -864,7 +872,7 @@
             let newVal = prompt(promptText, student[field]);
             if(newVal !== null && newVal.trim() !== "") {
                 student[field] = newVal.trim();
-                localStorage.setItem('mps_pro_jalal_students', JSON.stringify(savedAccounts));
+                localStorage.setItem('mozakra_pro_students', JSON.stringify(savedAccounts));
                 loginStudent(currentStudentIndex);
                 alert("تم التحديث بنجاح!");
             }
@@ -874,7 +882,7 @@
             if(!isAdmin) return;
             if(confirm("هل أنت متأكد من حذف هذا الطالب؟")) {
                 savedAccounts.splice(currentStudentIndex, 1);
-                localStorage.setItem('mps_pro_jalal_students', JSON.stringify(savedAccounts));
+                localStorage.setItem('mozakra_pro_students', JSON.stringify(savedAccounts));
                 alert("تم الحذف.");
                 showScreen('screen-welcome');
             }
@@ -967,7 +975,7 @@
             if(field === 'homework') document.getElementById('hwStatus').innerText = val;
             if(field === 'score') document.getElementById('scoreStatus').innerText = val;
 
-            localStorage.setItem('mps_pro_jalal_students', JSON.stringify(savedAccounts));
+            localStorage.setItem('mozakra_pro_students', JSON.stringify(savedAccounts));
             alert("تم التحديث بنجاح!");
             closeModalDirect();
         }
@@ -975,7 +983,8 @@
         function sendWhatsAppReport() {
             let student = savedAccounts[currentStudentIndex];
             let phone = student.phone !== "غير متوفر" ? student.phone : "";
-            let reportText = `📌 *منصة أ/ جلال الإتربي التعليمية*%0A` +
+            let reportText = `📌 *منصة Mozakra Pro التعليمية*%0A` +
+                             `👨‍🏫 المعلم: *${student.teacher}*%0A` +
                              `👤 الطالب: *${student.name}*%0A` +
                              `📚 الصف: ${student.grade}%0A` +
                              `------------------%0A` +
@@ -986,7 +995,7 @@
                              `💳 الاشتراك: ${student.payment}%0A` +
                              `💬 السلوك: ${student.behavior}%0A` +
                              `------------------%0A` +
-                             `للتواصل بالسنتر: 01093785277`;
+                             `إدارة المنصة التعليمية`;
             
             window.open(`https://wa.me/${phone}?text=${reportText}`, '_blank');
         }
